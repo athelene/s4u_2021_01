@@ -2,19 +2,14 @@
 cf_scripts/
 CFIDE/
 WEB-INF/
-oauth.cfm
-Index.cfm
 hold
 application.cfc
 .vscode/
 Untitled-1.txt
-ckeditor/
 No longer used/
 node_modules/
 restplay/
 test/
-UploadStage/
 Z_Clips/
 elements.css 
-nofolderstuff/
 *.zip
