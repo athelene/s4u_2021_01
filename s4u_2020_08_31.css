@@ -1,0 +1,647 @@
+/* Set up Custom Styles */
+
+/* Elements */
+
+a.s4u {
+  color: #689C8D;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+a.s4u:hover {
+  background-color: #6A8499;
+  color: #000C16;
+  cursor: pointer;
+}
+
+a.s4u-interview-question:hover {
+  color: #000C16;
+}
+
+a.s4u:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+a.s4uVP {
+  color: #000C16;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+a.s4uVP:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+a.s4uVP:hover {
+  background-color: #6A8499;
+  color: #DADADA;
+  cursor: pointer;
+}
+
+
+body {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+input.button-add {
+  background-image: url(../icons/edit.png);
+  /* 16px x 16px */
+  background-color: transparent;
+  /* make the button transparent */
+  background-repeat: no-repeat;
+  /* make the background image appear only once */
+  background-position: 0px 0px;
+  /* equivalent to 'top left' */
+  border: none;
+  /* assuming we don't want any borders */
+  cursor: pointer;
+  /* make the cursor like hovering over an <a> element */
+  height: 16px;
+  /* make this the size of your image */
+  padding-left: 16px;
+  /* make text start to the right of the image */
+  vertical-align: middle;
+  /* align the text vertically centered */
+}
+
+p {
+  font-size: 1.5em;
+}
+
+p.s4ubook {
+  margin-bottom: 0em;
+  padding-bottom: 0em;
+  margin-block-start: 0em;
+}
+
+
+textarea {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Classes */
+
+.book-content {
+  font-weight: bold;
+}
+
+.booklist {
+  background-color: aquamarine;
+  padding: .75rem 1.25rem;
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+.btn-circle {
+  line-height: 60px;
+  text-align: center;
+  padding: 5px;
+  width: 10%;
+  height: auto;
+  cursor: pointer;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-sm {
+  width: 40px;
+  height: 44px;
+  line-height: 35px;
+  font-size: 0.9rem;
+}
+
+.btn-circle-lg {
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 1.1rem;
+}
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
+}
+
+.circleBtn {
+  border-radius: 15px;
+}
+
+.divContentRight {
+  float: right;
+}
+
+.divHover {
+  background-color: #DADADA;
+  cursor: pointer;
+}
+
+.double-nav .breadcrumb-dn {
+  color: #fff;
+}
+
+.draggable {
+  padding: 1rem;
+  background-color: #DADADA;
+  border: 1px solid #256F5B;
+  cursor: move;
+  display: block;
+}
+
+.draggable.dragging {
+  opacity: .5;
+}
+
+.featureMediaContainer {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  color: black;
+}
+
+.featureMediaBorder {
+  border-color: #408E2F;
+  border-width: 3px;
+}
+
+.featureMediavideo {
+  max-width: 200px;
+  max-height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.fontAweAlign {
+  vertical-align: middle;
+}
+
+.footer-s4u {
+  width: 100%;
+  min-height: 2em;
+  padding-right: 0;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-elegant .font-small {
+  font-size: 0.8rem;
+}
+
+.form-elegant .z-depth-1a {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+}
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+}
+
+.hamburgerMenu {
+  float: right;
+}
+
+.HiddenStoryStarter {
+  visibility: hidden;
+}
+
+.HomeAuthorDiv {
+
+  border-top-style: none;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.HomeFeedTextDiv {
+  max-height: 3em;
+  overflow: hidden;
+}
+
+.HomeMediaDiv {
+  position: relative;
+  width: 35%;
+  display: inline-block;
+  text-align: right;
+  padding-right: 1em;
+}
+
+.HomeOutlineDiv {
+  background-color: rgb(250, 244, 233);
+}
+
+.HomePageLink {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.HomePostDiv {
+  max-height: 20em;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 65%;
+  padding-left: 1em;
+}
+
+.HomeTitleDiv {
+  padding-left: 0;
+}
+
+.icon-input-btn {
+  display: inline-block;
+  position: relative;
+}
+
+.icon-input-btn input[type="button"] {
+  padding-left: 2em;
+}
+
+.icon-input-btn .glyphicon {
+  display: inline-block;
+  position: absolute;
+  left: 0.65em;
+  top: 30%;
+}
+
+.image {
+  position: relative;
+  display: inline-block;
+}
+
+.img__wrap {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  display: inline;
+}
+
+.img__description {
+  position: absolute;
+  top: -1.5em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #256F5B;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+  width: 15em;
+  height: 4.5em;
+  background-color: #DBDBDB;
+
+}
+
+.img_img {
+  width: 3.5em;
+  height: 3.5em;
+}
+
+.InputLeftText {
+  width: 100%;
+  text-align: left;
+  font-size: 3vw;
+}
+
+.InputQCText {
+  width: 100%;
+  text-align: left;
+  font-size: 1.5vw;
+}
+
+.interviewList {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.mainContent {
+  margin-top: 5em;
+  margin-left: 1em;
+  margin-right: 25em;
+}
+
+.navbar-6 .navbar-toggler-icon {
+  background-image: url('https://mdbootstrap.com/img/svg/hamburger8.svg?color=black');
+}
+
+.nav a {
+  padding: 0;
+}
+
+.navBackground {
+  margin-left: 2em;
+}
+
+.newSaltUser {
+  margin-left: 2em;
+}
+
+.notify {
+  background-color: rgb(163, 4, 4);
+  color: white;
+  font-weight: bold;
+}
+
+.overlay {
+  position: absolute;
+  right: 0;
+  z-index: 5;
+  color: white;
+}
+
+.QCText {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.s4u-card-footer {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.s4u-Circle-Card-Img {
+  height: 14rem;
+
+}
+
+.s4u-circle-set {
+  background-color: #c0d7fa;
+}
+
+.s4u-content-inline {
+  display: inline-block;
+}
+
+.s4u-delete-circle-btn {
+
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: 0.25rem;
+}
+
+.s4u-div-inline {
+  display: inline;
+}
+
+.s4u-FeedBlock {
+  background-color: #DBDBDB;
+  margin: 2em;
+  padding: 5px;
+}
+
+.s4u-FeedType {
+  display: inline-block;
+}
+
+.s4u-gallery-div {
+  width: 10em;
+  max-height: 10em;
+  text-align: center;
+}
+
+.s4u-gallery-img {
+  width: 10em;
+  max-height: 10em;
+}
+
+.s4u-HeaderIcons {
+  font-family: 'Pacifico', cursive;
+  background-color: #73C6B6;
+  font-weight: bold;
+  font-size: 1.5em;
+  display: inline-block;
+  border-radius: 50%;
+  width: 1.5em;
+  text-align: center;
+}
+
+.s4uHidden {
+  visibility: hidden;
+}
+
+.s4uInclude {
+  position: relative;
+  top: 1rem;
+}
+
+.s4u-LibraryBlock {
+  background-color: #DBDBDB;
+  margin-bottom: 1em;
+  padding: 5px;
+}
+
+.s4u-search-container {
+  float: right;
+
+}
+
+.s4u-StoryText {
+  font-size: 1.5em;
+}
+
+.s4uTextArea {
+  max-width: calc(100% - 10%);
+}
+
+.s4u-TextStorySm {
+  visibility: visible;
+}
+
+.s4u-video-off {
+  pointer-events: none;
+}
+
+.side-nav.wide.slim .sn-ad-avatar-wrapper a span {
+  display: none;
+}
+
+.sortContainer {
+  padding: 1rem;
+}
+
+.spanSpacer {
+  padding: 1 rem;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #408E2F;
+}
+
+.text-5 {
+  font-size: 4vw;
+  margin-bottom: 0;
+}
+
+.video-Sizer {
+  width: 20em !important;
+  height: auto !important;
+}
+
+.viewpoint {
+  padding: .75rem;
+  width: 90%;
+  margin-left: 2em;
+  text-align: center;
+}
+
+.VPAnswerName {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.VPAnswerText {
+  width: 100%;
+  text-align: center;
+  font-size: 3vw;
+}
+
+.VPAnswerTextArea {
+  display: inline-block;
+  width: 75%;
+}
+
+/* IDs */
+#area {
+  height: 100vh;
+}
+
+#photos {
+  /* Prevent vertical gaps */
+  line-height: 0;
+
+  -webkit-column-count: 5;
+  -webkit-column-gap: 0px;
+  -moz-column-count: 5;
+  -moz-column-gap: 0px;
+  column-count: 5;
+  column-gap: 0px;
+}
+
+#photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+}
+
+#vpview {
+  height: 10vh;
+  overflow: auto;
+  max-height: 30vh;
+}
+
+/* MDB CSS */
+
+
+
+/* MEDIA QUERIES FOR GALLERY */
+@media (max-width: 1600px) AND (min-width: 1001px) {
+  #photos {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+
+  .btn-responsive {
+    padding: 4px 9px;
+    font-size: 90%;
+    line-height: 1.2;
+  }
+
+}
+
+@media (max-width: 1000px) AND (min-width: 801px) {
+  #photos {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+
+  .btn-responsive {
+    padding: 2px 4px;
+    font-size: 80%;
+    line-height: 1;
+  }
+
+}
+
+@media (max-width: 800px) AND (min-width: 401px) {
+  #photos {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+
+  .btn-responsive {
+    padding: 2px 10px;
+    font-size: 80%;
+    line-height: .5;
+  }
+
+}
+
+@media (max-width: 400px) {
+  #photos {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+
+  .btn-responsive {
+    padding: 2px 10px;
+    font-size: 80%;
+    line-height: .5;
+  }
+
+}
+
+@media (max-width: 999px) {
+  #largeNav {
+    display: none;
+  }
+
+  #mobileNav {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1000px) {
+  #largeNav {
+    display: block;
+    width: 100%;
+  }
+
+  #mobileNav {
+    display: none;
+  }
+}
