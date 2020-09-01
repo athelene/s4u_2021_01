@@ -80,7 +80,7 @@
 
   <div id="mobileNav">
         <a class="navbar-brand newSaltUser" href="/homepage.cfm">
-          <h2 responsive><i class="fas fa-home"></i>Stories For Us</h2>
+          <p class="TopNavText"><i class="fas fa-home"></i>Stories For Us</p>
         </a>
   <button class="btn bg-primary hamburgerMenu" type="button" data-toggle="collapse" data-target="##collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <i class="fas fa-bars"></i>

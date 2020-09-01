@@ -28,7 +28,7 @@
         <cftry>
           <cfquery name="qAddUser">
             INSERT INTO UserTbl (UserFirst, UserLast, UserDisplayName, UserEmail, UserSubType, UserAuthID, AdminLevel,
-            LastPageView, LastBookView, LastTCView, LastCircleView)
+            LastPageView, LastBookView, LastTCView, LastCircleView, UserMediaLoc)
             VALUES(<cfqueryparam value="#trim(form.UserFirst)#" cfsqltype="CF_SQL_VARCHAR">,
               <cfqueryparam value="#trim(form.UserLast)#" cfsqltype="CF_SQL_VARCHAR">,
                 <cfqueryparam value="#trim(form.UserDisplayName)#" cfsqltype="CF_SQL_VARCHAR">,
@@ -39,7 +39,8 @@
                         <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
                           <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
                             <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
-                              <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">
+                              <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">, 
+                                <cfqueryparam value="/M_Profile/GenericUser.png" cfsqltype="CF_SQL_VARCHAR">                                                                                                   
                                 )
           </cfquery>
           <cfcatch type="any">

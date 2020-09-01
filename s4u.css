@@ -160,6 +160,10 @@ textarea {
   font-weight: bold;
 }
 
+.qcListDiv {
+  padding-left: 2em;
+}
+
 .s4u-content-inline {
   display: inline-block;
 }
@@ -214,6 +218,10 @@ textarea {
 .text-5 {
   font-size: 4vw;
   margin-bottom: 0;
+}
+
+.TopNavText {
+  font-size: 7vw;
 }
 
 .video-Sizer {

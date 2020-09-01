@@ -38,48 +38,42 @@
       <h4>Quick Connect Questions</h4>
       <cfoutput>
 
-        <cfset i=0>
           <cfloop query="qQuickConnect">
-            <cfset i=i + 1>
-              <cfset qcListDiv='qcListDiv' & i>
-                <cfset qcListDivHref='##qcListDiv' & i>
-                  <div id="myAnswerDiv" class="md-form md-bg col-xs-8">
-                    <span class="QCText">#qQuickConnect.Viewpointq#</span> <BR>
-                     #dateformat(qQuickConnect.ViewPointDate,
-                    'YYYY-MM-DD')#
+
+              <cfset qcListDiv='qcListDiv' & #qQuickConnect.ViewPointID#>
+                <cfset qcListDivHref='##qcListDiv' & #qQuickConnect.ViewPointID#>
+
+<!--Accordion wrapper-->
+<div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+  <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="headingTwo1" 
+    onclick="getQCAnswers(<cfoutput >#qQuickConnect.ViewpointID#, #session.mycircleID#, #session.UserID#</cfoutput>);">
+      <a class="collapsed" data-toggle="collapse" data-parent="##accordionEx1" href="#qcListDivHref#"
+        aria-expanded="false" aria-controls="collapseTwo1">
+        <h5 class="mb-0">
+          #qQuickConnect.ViewPointQ# <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="#qcListDiv#" class="collapse" role="tabpanel" aria-labelledby="headingTwo1"
+      data-parent="##accordionEx1">
+      <div class="card-body" id="#qcListDiv#">
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
 
 
-                    <!--Accordion wrapper-->
-                    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-
-                      <!-- Accordion card -->
-                      <div class="card">
-
-                        <!-- Card header -->
-                        <div class="card-header" role="tab" id="headingOne1"
-                          onclick="getQCAnswers(<cfoutput>#qQuickConnect.ViewpointID#, #session.mycircleID#, #session.UserID#</cfoutput>)">
-                          <a data-toggle="collapse" data-parent="##accordionEx" href="#qcListDivHref#"
-                            aria-expanded="true" aria-controls="collapseOne1">
-                            <h6 class="mb-0">
-                              See Answers<i class="fas fa-angle-down rotate-icon"></i>
-                            </h6>
-                          </a>
-                        </div>
-
-                        <!-- Card body -->
-                        <div id="#qcListDiv#" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
-                          data-parent="##accordionEx">
-                          <cfset qcAnswerDiv = 'qcAnswerDiv' & i>
-                          <div class="card-body" id="#qcAnswerDiv#">
-
-                          </div>
-                        </div>
-
-                      </div>
-                      <!-- Accordion card -->
-                    </div>
-                    <!-- Accordion wrapper -->
-                  </div>
+</div>
+<!-- Accordion wrapper -->
           </cfloop>
       </cfoutput>
       <BR><BR><BR><BR>
@@ -118,7 +112,7 @@
                 // Check Notifications
                 newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
                   '#session.LastTCView#' < /cfoutput>);
-                  getQCAnswers(<cfoutput >#qQuickConnect.ViewpointID#, #session.mycircleID#, #session.UserID# </cfoutput>);
+                  // getQCAnswers(<cfoutput >#qQuickConnect.ViewpointID#, #session.mycircleID#, #session.UserID# </cfoutput>);
                     // End of document ready
                   });
         </script>

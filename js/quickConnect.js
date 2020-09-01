@@ -12,27 +12,28 @@ var getQCAnswers = function (QCID, EveryoneCircle, userID) {
 var populateQCAnswers = function (answerList) {
   console.log('starting populateQCAnswers');
   console.log(answerList);
-  if (answerList === 'No answers') {
-    var qcAnswerDiv = document.getElementById("qcAnswerDiv");
-    var itemCode = 'No one has answered yet.';
-    qcAnswerDiv.innerHTML = itemCode;
-    return
-  } else {
 
     // itemCode will update the answerDiv
     var itemCode = '';
+
+    if (answerList === 'No answers') {
+      var qcAnswerDiv = document.getElementById(dispDiv);
+      var itemCode = 'No one has answered yet.';
+      qcAnswerDiv.innerHTML = itemCode;
+      return
+    } else {
     for (k = 0; k < answerList.DATA.length; k++) {
-      var divNo = k + 1;
-      var answerDiv = 'qcAnswerDiv' + divNo;
-      console.log(answerDiv, 'is the answerDiv');
-      var qcAnswerDiv = document.getElementById(answerDiv);
+      var dispDiv = 'qcListDiv' + answerList.DATA[k][1];
+      console.log('dispDiv is: ', dispDiv);
+      var qcAnswerDiv = document.getElementById(dispDiv);
+      console.log(qcAnswerDiv, 'is the dispDiv')
 
       var qcAnswer = answerList.DATA[k][2];
       console.log(qcAnswer);
       var qcUserDisplayName = answerList.DATA[k][3];
       console.log(qcUserDisplayName);
       itemCode = itemCode +
-        '<div>' +
+        '<div class="qcListDiv"' + '>' +
         qcUserDisplayName + ': ' +
         qcAnswer +
         '</div>'
@@ -197,7 +198,7 @@ var populateQCToday = function (answerList) {
     // itemCode will update the answerDiv
     var itemCode = '';
     for (k = 0; k < answerList.DATA.length; k++) {
-      var answerDiv = 'qcAnswerDiv';
+      var answerDiv = 'qcListDiv' + answerList.DATA[k][1];
       console.log(answerDiv, 'is the answerDiv');
       var qcAnswerDiv = document.getElementById(answerDiv);
 

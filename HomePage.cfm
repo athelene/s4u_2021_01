@@ -45,7 +45,6 @@
           <div class="VPAnswerText">
             <p id="tooltip1"><img src="/img/QC.pjg" style="width:3.5em; height:3.5em;" />
               <span>Introduction to HTML and CSS: tooltip with extra text</span></p>
-
             No Quick Connect question is available today. <BR>
             <a class="btn bg-primary text-white" href="/Admin/SubmitQuickConnect.cfm">
               Click here to submit your idea and a chance to win a $10 credit!</a>
@@ -89,7 +88,7 @@
 
                 <!-- Accordion card -->
                 <div class="card">
-
+                <cfset dispDiv = 'qcListDiv' & #qGetQCToday.ViewPointID#>
                   <!-- Card header -->
                   <div class="card-header" role="tab" id="headingOne1"
                     onclick="getQCAnswers(<cfoutput>#qGetQCToday.ViewpointID#, #session.mycircleID#, #session.UserID#</cfoutput>)">
@@ -104,7 +103,7 @@
                   <!-- Card body -->
                   <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
                     data-parent="##accordionEx">
-                    <div class="card-body" id="qcAnswerDiv">
+                    <div class="card-body" id="#dispDiv#">
 
                     </div>
                   </div>
