@@ -1,4 +1,4 @@
-<!-- Footer -->
+<!-- Footer --> 
 <nav class="navbar fixed-bottom navbar-primary footer-s4u bg-primary">
 
   <!-- Footer Links -->
