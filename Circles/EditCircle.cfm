@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+
+  <link rel="icon" href="/img/mdb-favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="/css/mdb.min.css" rel="stylesheet">
+  <link href="/s4u.css" rel="stylesheet">
+  <link href="/main.css" rel="stylesheet">
+
+  <cfajaxproxy cfc="cfc.Notify" jsclassname="Notify" />
+  <cfajaxproxy cfc="cfc.mem" jsclassname="mem" />
+  <cfset session.storyID=0 />
+  <cfset session.circleID=url.circleID />
+  <!--- Update LastPage Field --->
+  <cfquery name="qSetLastCircleView">
+    Update Usertbl
+    SET LastCircleView = GetDate()
+    WHERE userid = #session.userID#
+  </cfquery>
+
+  <!--- Start Nav --->
+  <cfinclude template="/TopNavSmall.cfm">
+
+    <cfquery name="qGetCircle">
+      Select * from CircleTbl
+      where CircleID = #url.CircleID#
+    </cfquery>
+
+
+
+    <cfoutput>
+
+      <h2>#qGetCircle.CircleName#</h2>
+      <form action="/circles/EditCircleAction.cfm" enctype="multipart/form-data" method="post">
+        <div>
+          Circle Name:
+          <div class="input-group mb-3">
+            <input type="text" name="CircleName" value="#trim(qGetCircle.CircleName)#"
+              class="form-control InputLeftText" /><br />
+
+            <div class="input-group-append">
+              <button class="btn-sm btn-secondary input-group-text" type="submit"><i class="fas fa-check"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="CircleID" value="#qGetCircle.CircleID#" />
+      </form>
+      <BR>
+      <h2>People in This Circle
+        <cfif qGetCircle.CircleID IS #session.mycircleID#>
+          <a href="/circles/InviteToMyEveryone.cfm" class="btn btn-secondary">
+            <i class="fas fa-user-plus"></i></a>
+          <cfelse>
+            <a href="/circles/AddToCircle.cfm?CircleID=#qGetCircle.CircleID#" class="btn btn-secondary"
+              title="Add to this circle">
+              <i class="fas fa-user-plus"></i></a>
+        </cfif>
+      </h2>
+
+      <div id="CircleDiv">
+      </div>
+
+
+    </cfoutput>
+
+    <!---         Start Footer --->
+    <cfinclude template="/FooterMobile.cfm">
+      <!-- JQuery -->
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="/js/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="/js/mdb.min.js"></script>
+
+      <!-- Optional JavaScript -->
+      <script type="text/javascript" src="/js/circleFilter.js"></script>
+      <script type="text/javascript" src="/js/badgeUpdates.js"></script>
+      <script type="text/javascript" src="/js/s4u.js"></script>
+
+      <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+              // Check Notifications
+              newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
+                '#session.LastTCView#' < /cfoutput>);       
+                getMemberList( < cfoutput > #url.CircleID# < /cfoutput>);
+                  // End of document ready
+                });
+      </script>
+      </body>
+
+</html>
