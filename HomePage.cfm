@@ -13,6 +13,7 @@
   <link href="/s4u.css" rel="stylesheet">
   <link href="/main.css" rel="stylesheet">
 
+  <cfajaxproxy cfc="cfc.user" jsclassname="user" />
   <cfajaxproxy cfc="cfc.Notify" jsclassname="Notify" />
   <cfajaxproxy cfc="cfc.StoryFilter" jsclassname="StoryFilter" />
   <cfajaxproxy cfc="cfc.qcAnswers" jsclassname="qcAnswers" />
@@ -196,7 +197,6 @@
 <!--- End Filtering Section --->
 <!--- Start pages list  --->
 
-
     <cfoutput>
       <div id="StoryDiv">
 
@@ -218,6 +218,7 @@
 
         <!-- Optional JavaScript -->
 <!---         <script type="text/javascript" src="/js/homeFeed.js"></script> --->
+        <script type="text/javascript" src="/js/s4u.js"></script>
         <script type="text/javascript" src="/js/badgeUpdates.js"></script>
         <script type="text/javascript" src="/js/quickConnect.js"></script>
         <script type="text/javascript" src="/js/storyFilters.js"></script>
@@ -238,10 +239,10 @@
                 $(function () {
                   $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
                 });
-                // getHomeFeed(<cfoutput>#session.UserID#</cfoutput>);
+                getUserInfo(<cfoutput>#session.userID#</cfoutput>);
                 newPages(<cfoutput>#session.userid#,'#session.LastPageView#','#session.LastBookView#'</cfoutput>);
                 getMyAnswer(<cfoutput> #todaysQC#, #session.userID# </cfoutput>);
-                getQCToday(<cfoutput> #todaysQC#, #session.myCircleID#, #session.userID# </cfoutput>);
+
                 getAllStories(<cfoutput>#session.userid#</cfoutput>);
                         // End of document ready
                       });

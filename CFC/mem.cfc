@@ -145,9 +145,7 @@
 		</cfquery>
 		<cfquery name="qryGetCircles">
 			Select CircleID from CircleTbl
-			where circleID = #arguments.CircleID#
-			or
-			(CircleOwner = #arguments.userID#)
+			where CircleID = #arguments.Circleid#
 		</cfquery>
 
 		<cfreturn qryGetCircles />
@@ -179,10 +177,7 @@
 			(CircleOwner = #arguments.UserID# and CircleSort = '0')
 		</cfquery>
 
-		<cfquery name="qryEveryoneCircles">
-			Select CircleID from CircleTbl
-			where circleID = #arguments.CircleID#
-		</cfquery>
+
 		<cfset vSubject=#qGetSenderName.UserDisplayName# & ' has invited you to their circles on Stories For Us!'>
 
 			<cfmail from="Storyteller@storiesforus.com" to="#qGetReceiverEmail.UserEmail#" subject="#vSubject#"
@@ -210,7 +205,7 @@
 		</cfquery>
 		<cfquery name="qGetCircleID">
 			Select CircleID from CircleTbl
-			where CircleID = #arguments.circleID#
+			where CircleID = #arguments.CircleID#
 		</cfquery>
 
 		<cfreturn qGetCircleID>

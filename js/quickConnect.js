@@ -17,6 +17,7 @@ var populateQCAnswers = function (answerList) {
     var itemCode = '';
 
     if (answerList === 'No answers') {
+      var dispDiv = 'qcListDiv' + answerList.DATA[k][1];
       var qcAnswerDiv = document.getElementById(dispDiv);
       var itemCode = 'No one has answered yet.';
       qcAnswerDiv.innerHTML = itemCode;
@@ -188,16 +189,18 @@ var getQCToday = function (QCID, EveryoneCircle, userID) {
 var populateQCToday = function (answerList) {
   console.log('starting populateQCToday');
   console.log(answerList);
-  if (answerList === 'No answers') {
-    var qcAnswerDiv = document.getElementById("qcAnswerDiv");
-    var itemCode = 'No one has answered yet.';
-    qcAnswerDiv.innerHTML = itemCode;
-    return
-  } else {
-
     // itemCode will update the answerDiv
     var itemCode = '';
     for (k = 0; k < answerList.DATA.length; k++) {
+        var qcListDiv = 'qcListDiv' + answerList.DATA[k][1];
+        if (answerList === 'No answers') {
+          var qcAnswerDiv = document.getElementById("qcListDiv");
+          var itemCode = 'No one has answered yet.';
+          qcAnswerDiv.innerHTML = itemCode;
+          return
+        } else {
+
+
       var answerDiv = 'qcListDiv' + answerList.DATA[k][1];
       console.log(answerDiv, 'is the answerDiv');
       var qcAnswerDiv = document.getElementById(answerDiv);

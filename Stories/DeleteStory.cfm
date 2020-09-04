@@ -4,9 +4,13 @@
     where StoryID = #url.storyID#
 </cfquery>
 
+<cfquery name="qDeleteFromBooks">
+    delete from BookContentTbl
+    where StoryID = #url.storyID#
+</cfquery>
 
 <cfset url.StoryID=0>
 
 
     END OF delete STORY
-    <cflocation url="/library_pages.cfm">
+    <cflocation url="/HomePage.cfm">

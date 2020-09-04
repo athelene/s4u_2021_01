@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
 
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/mdb-favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="/css/mdb.min.css" rel="stylesheet">
   <link href="/s4u.css" rel="stylesheet">
   <link href="/main.css" rel="stylesheet">
 
@@ -51,7 +51,7 @@
         </select>
       </div>
       <input id="data" type="hidden" name="data" value="" />
-      <button type="submit" class="btn-save btn btn-primary btn-sm">Save Question</button>
+      <button type="submit" class="btn-save btn btn-secondary btn-sm">Save Question</button>
     </form>
     <HR>
     Interview Questions:<BR>

@@ -8,11 +8,12 @@
         <cfquery name="qryCircle">
 
             Select CircleTbl.CircleID, trim(CircleTbl.CircleName) AS CircleName, 
-            trim(CircleSort) as CircleSort
+            UserTbl.PrimaryCircle
             FROM CircleTbl
-            where CircleTbl.CircleOwner = #arguments.Userid#
-            order by CircleTbl.CircleSort
-
+            join UserTbl 
+            on CircleTbl.CircleOwner = UserTbl.UserID
+            where CircleTbl.CircleOwner = #arguments.Userid# 
+            order by CircleTbl.CircleName
         </Cfquery>
 
         <cfreturn qryCircle />
@@ -21,11 +22,14 @@
     <cffunction name="deleteCircle" access="remote" returnFormat="json" output="false">
         <cfargument name="circleID" required="yes" type="numeric" default="0" />
         <cfargument name="userID" required="yes" type="numeric" default="0" />
+        <cfif #arguments.circleID# IS #session.MyCircleID#>
 
+        <cfelse>
         <cfquery name="qryDeleteCircle">
             Delete from CircleTbl
             where CircleTbl.CircleID = #arguments.circleID#
         </cfquery>
+        </cfif>
         <cfquery name="qryGetCircles">
             Select CircleTbl.CircleID, trim(CircleTbl.CircleName) AS CircleName, 
             trim(CircleSort) as CircleSort

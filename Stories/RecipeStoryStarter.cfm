@@ -33,7 +33,7 @@
   <!--- Display Media   --->
   <cfset session.StoryID=0>
     <cfset mode="start">
-      <br />
+
       <cfquery name="qGetCircles">
         Select * from CircleTbl
         where CircleOwner = #session.Userid#
@@ -44,22 +44,22 @@
         <ul class="nav nav-pills nav-fill">
           <li class="nav-item">
             <a class="nav-link " href="/stories/storystarter.cfm">
-              <p class="text-5">Story</p>
+              Story
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/stories/InterviewStoryStarter.cfm">
-              <p class="text-5">Interview</p>
+              Interview
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/stories/recipeStoryStarter.cfm">
-              <p class="text-5">Recipe</p>
+              Recipe
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/stories/TraditionStoryStarter.cfm">
-              <p class="text-5">Tradition</p>
+              Tradition
             </a>
           </li>
         </ul>
@@ -159,7 +159,7 @@
           <input class="s4uTextArea form-control" type="text" name="StoryTitle" placeholder="Recipe Title"><br>
 
           <div class="text-center">
-            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">
+            <a href="" class="btn btn-secondary btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">
               <i class="fas fa-video"></i> / <i class="fas fa-camera"></i></a>
           </div>
 
@@ -253,10 +253,8 @@
                   });
 
                   // Check Notifications
-                  sessionUserid(<cfoutput>#session.userid#</cfoutput>);
                   newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
                     '#session.LastTCView#' < /cfoutput>);
-
                   updateMedia( <cfoutput>#session.UserID#</cfoutput>);
 
                       $('.mdb-select').materialSelect();

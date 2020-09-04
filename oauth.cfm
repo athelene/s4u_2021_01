@@ -7,9 +7,11 @@
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
      <!--Link to Custom CSS -->
-<link rel="stylesheet" href="s4u.css">
+  <link rel="stylesheet" href="s4u.css">
+  <cfajaxproxy cfc="cfc.user" jsclassname="user" />
+  
     <title>Stories For Us</title>
   </head>
   <body>
@@ -39,7 +41,7 @@
  <cfset me = application.google.getProfile(session.token.access_token)>
 <!---  <cfset session.loggedin = true> --->
 <cfquery name="qgetUserId">
-  Select UserID, UserDisplayName, UserEmail 
+  Select UserID, UserDisplayName, UserEmail, PrimaryCircle 
   from UserTbl
   where UserEmail = '#me.email#'
 </cfquery>
@@ -50,12 +52,8 @@
   <cfset session.loggedin = true>
   <cfset session.userID = #qGetUserId.Userid#>
   <cfset session.userEmail = #qGetUserId.UserEmail#>
-  <cfquery name=qGetEveryoneCircle>
-    Select CircleID from CircleTbl
-    where CircleOwner = #session.Userid# 
-    AND CircleSort = '0'
-  </cfquery>
-  <cfset session.MyCircleID = #qGetEveryoneCircle.CircleID#>
+  <cfset session.MyCircleID = #qGetUserID.PrimaryCircle#>
+
     <cfscript>
   session.todayis = Now();
   session.LastPageView = Now();
@@ -88,5 +86,14 @@ Error validating.
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <!-- Optional JavaScript -->
+      <script type="text/javascript" src="/js/s4u.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+              getUserInfo(<cfoutput>#session.userid#</cfoutput>);
+                  // End of document ready
+                });
+      </script>
   </body>
 </html>

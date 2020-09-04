@@ -32,7 +32,6 @@
 
   <!--- Display Media   --->
 
-      <br>
       <cfquery name="qGetCircles">
         Select * from CircleTbl
         where CircleOwner = #session.Userid#
@@ -43,22 +42,22 @@
         <ul class="nav nav-pills nav-fill">
       <li class="nav-item">
         <a class="nav-link active" href="/stories/storystarter.cfm">
-          <p class="text-5">Story</p>
+          Story
         </a>
       </li>
           <li class="nav-item">
             <a class="nav-link" href="/stories/InterviewStoryStarter.cfm">
-              <p class="text-5">Interview</h5>
+              Interview
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/stories/recipeStoryStarter.cfm">
-              <p class="text-5">Recipe</h5>
+              Recipe
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/stories/TraditionStoryStarter.cfm">
-              <p class="text-5">Tradition</h5>
+              Tradition
             </a>
           </li>
         </ul>
@@ -157,7 +156,7 @@
             <input class="s4uTextArea form-control" type="text" name="StoryTitle" placeholder="Story Title"><br>
 
             <div class="text-center">
-              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm" id="mediaBtn">
+              <a href="" class="btn btn-secondary btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm" id="mediaBtn">
                 <i class="fas fa-video"></i> / <i class="fas fa-camera"></i></a>
             </div>
             <H4>Text:</h4>
@@ -234,10 +233,8 @@
                   });
 
                   // Check Notifications
-                  sessionUserid(<cfoutput>#session.userid#</cfoutput>);
                   newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
                     '#session.LastTCView#' < /cfoutput>);
-
                   updateMedia( <cfoutput>#session.UserID#</cfoutput>);
 
                       $('.mdb-select').materialSelect();

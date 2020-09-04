@@ -252,18 +252,32 @@ var restoreMembersNBK = function (memberID) {
   u.restoreMembersNBK(memberID, circleVal);
 }
 
-// GET MEMBER LIST FOR PAGES 
-var sessionUserid = function (userID) {
-  var sessionUserID = new sessionUser(userID);
-  sessionUserID.setCallbackHandler(setSessionUserID);
-  sessionUserID.setErrorHandler(myErrorHandler);
-  sessionUserID.sessionUserid(userID);
+
+// GET MEMBER LIST FOR BOOKS
+var getUserInfo = function () {
+  var userID = localStorage.getItem("userID");
+  var l = new user(userID);
+  l.setCallbackHandler(setUserVars);
+  l.setErrorHandler(myErrorHandler);
+  l.getUser(userID);
 }
 
-var setSessionUserID = function (userID) {
-  window.UserID = userID.DATA[0][0];
-  console.log("userid is: ", window.UserID)
-  return;
+// Callback function to display the results of getNewBookMembers 
+var setUserVars = function (userInfo) {
+
+      localStorage.setItem('userID',userInfo.DATA[0][0]);
+      localStorage.setItem('userFirst',userInfo.DATA[0][1]);
+      localStorage.setItem('userLast',userInfo.DATA[0][2]);
+      localStorage.setItem('userDisplayName',userInfo.DATA[0][3]);
+      localStorage.setItem('primaryCircle',userInfo.DATA[0][4]);
+
+      console.log(Number(localStorage.userID), localStorage.userFirst, 
+        localStorage.userLast, localStorage.userDisplayName, Number(localStorage.primaryCircle));
+}
+
+var getWindowVars  =function () {
+  console.log(window.userFirst, window.userLast, window.userDisplayName, window.primaryCircle);
+
 }
 // ____________________________________________________________
 // Error handler for the asynchronous functions. 

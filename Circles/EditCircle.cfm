@@ -35,25 +35,30 @@
 
 
     <cfoutput>
-
+          <cfif qGetCircle.CircleID IS #session.MyCircleID#>
+          <p class="circleListText">#qGetCircle.CircleName#</p>
+          <cfelse>
       <h2>#qGetCircle.CircleName#</h2>
       <form action="/circles/EditCircleAction.cfm" enctype="multipart/form-data" method="post">
+      <input type="hidden" value="#session.MyCircleID#" id="sessionMyCircleID">
         <div>
           Circle Name:
           <div class="input-group mb-3">
             <input type="text" name="CircleName" value="#trim(qGetCircle.CircleName)#"
               class="form-control InputLeftText" /><br />
-
             <div class="input-group-append">
               <button class="btn-sm btn-secondary input-group-text" type="submit"><i class="fas fa-check"></i></button>
             </div>
           </div>
+
         </div>
 
         <input type="hidden" name="CircleID" value="#qGetCircle.CircleID#" />
       </form>
+          </cfif>
       <BR>
       <h2>People in This Circle
+            <input type="hidden" value="#session.MyCircleID#" id="sessionMyCircleID">
         <cfif qGetCircle.CircleID IS #session.mycircleID#>
           <a href="/circles/InviteToMyEveryone.cfm" class="btn btn-secondary">
             <i class="fas fa-user-plus"></i></a>

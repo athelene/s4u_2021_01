@@ -25,38 +25,42 @@ var populateCircles = function (cirList) {
     return;
   } else {
     var itemCode = '';
+    var primaryCode = '';
     for (k = 0; k < cirList.DATA.length; k++) {
       var cirID = cirList.DATA[k][0];
       var cirCircleName = cirList.DATA[k][1];
-      var cirCircleSort = cirList.DATA[k][2];
-
-      itemCode = itemCode +
-        '<div class="s4u-LibraryBlock s4u-delete-circle-btn">' 
-        if (cirCircleSort !== "0") {
+      var cirCirclePrimary = cirList.DATA[k][2];
+ 
+        if (cirCirclePrimary !== cirID) {
           itemCode = itemCode + 
+          '<div class="s4u-LibraryBlock s4u-delete-circle-btn">' +
           '<button class="btn btn-sm btn-secondary s4u-content-inline" onclick="deleteCircle(' +
           cirID + ')"' + '>' +
           '<i class="fa fa-minus-circle">' + 
           '</i>' + 
-          '</button>';
-        }
-        itemCode = itemCode + 
+          '</button>' +
+          '<a href="/circles/editcircle.cfm?CircleID=' + cirID + '"' +
+          ' class="list-group-item list-group-item-action">' +
+          cirCircleName +
+          '</a>' +
+          '</div>';
+        } else {
+        primaryCode = 
+        '<div class="s4u-LibraryBlock s4u-delete-circle-btn">' + 
         '<a href="/circles/editcircle.cfm?CircleID=' + cirID + '"' +
         ' class="list-group-item list-group-item-action">' +
         cirCircleName +
         '</a>' +
         '</div>';
-      if (cirCircleSort === "0") {
-        itemCode = itemCode + '<br />' + '<br />';
-      }
     }
 
   }
-  CircleDiv.innerHTML = itemCode
+  var jointCode = primaryCode + itemCode;
+  CircleDiv.innerHTML = jointCode;
   return;
 
 }
-
+}
 // GET MEMBER LIST FOR Exclude  
 var getCircleMembers = function (CircleID) {
   console.log('getting new mem using getMemberList');
@@ -84,17 +88,27 @@ var populateCircleMembers = function (member) {
 
       itemCode = itemCode +
         '<div class="list-group s4u-LibraryBlock">' +
-
-
         '<span class="newSaltUser">' +
-        '<h4>' +
+        '<h4>' 
+        if (memCircleID !== window.MyCircleID) {
+          console.log("memCircleID is: ", memCircleID, "and window.MyCircleID is: ", window.MyCircleID);
+          itemCode = itemCode + 
         '<button class="btn-sm btn btn-secondary" onclick="removeFromCircle(' +
-        memRemID + ', ' + memCircleID + ')' +
-        '">' +
+        memRemID + ', ' + memCircleID + ')' + 
+        '">' + 
         '<i class="fa fa-minus-circle"></i>' +
-        '</button>' +
+        '</button>' + 
         memUserDisplayName +
-        '</h4>' +
+        '</h4>' 
+          } else {
+          itemCode = itemCode + 
+          '<a href="DeleteEveryonePerson.cfm?person=' + memRemID +  
+          'class="btn btn btn-secondary">' 
+        itemCode = itemCode + 
+        memUserDisplayName +
+        '</h4>' 
+        }
+        itemCode = itemCode + 
         '</span>' +
         '</div>'
     }
@@ -107,6 +121,7 @@ var populateCircleMembers = function (member) {
 // GET MEMBER LIST FOR Editing Circle 
 var getMemberList = function (CircleID) {
   console.log('starting getMemberList');
+  console.log('window.primaryCircle is: ', window.primaryCircle);
   var m = new mem(CircleID);
   m.setCallbackHandler(populateCircleMembers);
   m.setErrorHandler(myErrorHandler);
