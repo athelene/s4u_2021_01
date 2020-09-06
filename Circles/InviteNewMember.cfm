@@ -59,9 +59,26 @@
     <cfinclude template="/TopNavSmall.cfm">
 
       <cfif qGetUserSubType.UserSubType IS 1>
-
-
-        <cfelse>
+      <cfquery name="qAdminCharterInvites">
+        Select AdminVarValue 
+        from AdminVarTbl 
+        where AdminVarName = 'CharterInvites'
+      </cfquery>
+      <cfquery name="qGetCharterCount">
+        Select InvitationID, InvitationType
+        from InvitationTbl 
+        where 
+        InvitedBy = #session.userID# 
+        AND InvitationType = 1
+      </cfquery>
+      <cfset remainingInvitations = #val(qAdminCharterInvites.AdminVarValue)# - #qGetCharterCount.RecordCount#>
+<cfoutput>
+<cfif #remainingInvitations# GT 0> 
+<h4>
+As a charter member of Stories For Us, you have #remainingInvitations# remaining invitations to share with a friend so they can also have a lifetime, 
+free use of this app. 
+</h4>
+</cfif>
 
           <form class="text-center border border-light p-5" enctype="multipart/form-data" method="post"
             action="/Circles/InviteNewMemberAction.cfm">
@@ -76,6 +93,38 @@
             <!-- Email -->
             <input type="email" name="InviteEmail" class="form-control mb-4" placeholder="E-mail">
 
+            <!-- InvitationType -->
+
+<cfif #remainingInvitations# GT 0>            
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="InvitationType" name="InvitationTypeChk">
+                <label class="form-check-label" for="InvitationType">Do you want to invite this person as one of your charter members?</label>
+            </div>
+</cfif>
+            <input type="checkbox" name="InviteEmail" class="form-control mb-4">
+
+            <!-- Sign in button -->
+            <button class="btn btn-secondary btn-block" type="submit">send Invitation</button>
+
+
+          </form>
+          <!-- Default form subscription -->
+</cfoutput>
+        <cfelse>
+
+          <form class="text-center border border-light p-5" enctype="multipart/form-data" method="post"
+            action="/Circles/InviteNewMemberAction.cfm">
+
+            <p class="h4 mb-4">Invite a Friend</p>
+
+            <p>Send an invitation to a friend to become a Stories For Us Member</p>
+
+            <!-- Name -->
+            <input type="text" id="InviteName" name="InviteName" class="form-control mb-4" placeholder="Name">
+
+            <!-- Email -->
+            <input type="email" name="InviteEmail" class="form-control mb-4" placeholder="E-mail">
+            <input type="hidden" name="InvitationType" value="2">
             <!-- Sign in button -->
             <button class="btn btn-secondary btn-block" type="submit">send Invitation</button>
 

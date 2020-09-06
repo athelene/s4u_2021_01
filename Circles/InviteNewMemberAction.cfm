@@ -46,7 +46,15 @@
                     </div>
             </cfif>
             <cfelse>
+    <cfif (isDefined("form.InvitationTypeChk"))>
+        <cfset InvitationType = 1>
+        <cfelse>
+        <cfset InvitationType = 2>
+    </cfif>
 
+    <cfif (isDefined("form.InvitationType"))>
+        <cfset InvitationType = #form.InvitationType#>
+    </cfif>
                 <cfquery name="qGetUserDisplayName">
                     Select UserID, UserDisplayName from UserTbl
                     where userid = #session.userid#
@@ -58,7 +66,7 @@
                     InvitedBy, InvitationType)
                     VALUES
                     ('#form.InviteName#', '#form.InviteEmail#', GETDATE(), 1, GETDATE(),
-                    #qGetUserDisplayName.userid#, 1)
+                    #qGetUserDisplayName.userid#, #InvitationType#)
                 </cfquery>
 
                 <cfset vSubject='Join ' & #qGetUserDisplayName.UserDisplayName# & ' on Stories For Us!'>
@@ -91,7 +99,7 @@
 
                         </cfmail>
                     </cfoutput>
-                    <cflocation url="/circles/InviteNewMember.cfm">
+                     <cflocation url="/circles/InviteNewMember.cfm"> 
     </cfif>
 
     <!---         Start Footer --->

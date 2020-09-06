@@ -16,7 +16,16 @@
 
     <body>
         <cfparam name="session.errordup" default="">
-            <cfset notifydatetime=CREATEODBCDATETIME( Now() ) />
+        <cfset notifydatetime=CREATEODBCDATETIME( Now() ) />
+
+        <cfquery name="qGetInviterInfo">
+        Select InvitedBy, primaryCircle, InvitationType 
+        from InvitationTbl 
+        left join UserTbl 
+        on InvitationTbl.InvitedBy = UserTbl.UserID 
+        where InviteEmail = '#form.Email#'
+        AND InvitedBy = #form.Sender#
+        </cfquery>
 
             <body>
                 <h1>Sign Up for Stories For Us</h1>
@@ -45,7 +54,7 @@
                             <cfqueryparam value="#trim(form.UserLast)#" cfsqltype="CF_SQL_VARCHAR">,
                             <cfqueryparam value="#trim(form.UserDisplayName)#" cfsqltype="CF_SQL_VARCHAR">,
                             <cfqueryparam value="#trim(form.Email)#" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
+                            <cfqueryparam value="#qGetInviterInfo.InvitationType#" cfsqltype="CF_SQL_INTEGER">,
                             <cfqueryparam value="#form.email#" cfsqltype="CF_SQL_VARCHAR">,
                             <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
                             <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
@@ -81,14 +90,7 @@
                             AND InvitedBy = #form.Sender#
                         </cfquery>
                     <cfset session.TodayIs=datetimeformat(now(), "YYYY-MM-DD HH:nn:ss" ) />
-                        <cfquery name="qGetInviterInfo">
-                        Select InvitedBy, primaryCircle 
-                        from InvitationTbl 
-                        left join UserTbl 
-                        on InvitationTbl.InvitedBy = UserTbl.UserID 
-                        where InviteEmail = '#form.Email#'
-                        AND InvitedBy = #form.Sender#
-                        </cfquery>
+
                         <cfquery name="qUpdateInviterCircle">
                         Insert into CircleMemberTbl 
                         (CircleID, MemberID, InvitedBy, AcceptedDate, Status) 
