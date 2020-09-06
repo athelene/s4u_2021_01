@@ -22,6 +22,7 @@ Array.prototype.findIdx = function (value) {
 // GET MEMBER LIST FOR PAGES 
 var getMembers = function () {
   var circleVal = document.getElementById("CircleID").value;
+  console.log('circleVal is: ', circleVal);
   var m = new mem(circleVal);
   m.setCallbackHandler(populateMembers);
   m.setErrorHandler(myErrorHandler);
@@ -254,8 +255,12 @@ var restoreMembersNBK = function (memberID) {
 
 
 // GET MEMBER LIST FOR BOOKS
-var getUserInfo = function () {
-  var userID = localStorage.getItem("userID");
+var getUserInfo = function (sessionuserID) {
+  if (sessionuserID === 'undefined') {
+  var userID = localStorage.getItem("userID");}
+  else {
+    var userID = sessionuserID;
+  }
   var l = new user(userID);
   l.setCallbackHandler(setUserVars);
   l.setErrorHandler(myErrorHandler);
@@ -271,11 +276,9 @@ var setUserVars = function (userInfo) {
       localStorage.setItem('userDisplayName',userInfo.DATA[0][3]);
       localStorage.setItem('primaryCircle',userInfo.DATA[0][4]);
 
-      console.log(Number(localStorage.userID), localStorage.userFirst, 
-        localStorage.userLast, localStorage.userDisplayName, Number(localStorage.primaryCircle));
 }
 
-var getWindowVars  =function () {
+var getWindowVars = function () {
   console.log(window.userFirst, window.userLast, window.userDisplayName, window.primaryCircle);
 
 }

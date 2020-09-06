@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
 
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/mdb-favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link href="/css/mdb.min.css" rel="stylesheet">
   <link href="/s4u.css" rel="stylesheet">
@@ -20,11 +20,10 @@
   <cfset session.todayis=#DateTimeFormat(Now(),"YYYY-MM-DD HH:MM:ss")# />
 
   <cfquery name="qGetEveryoneCircle">
-    Select CircleID from CircleTbl
-    where CircleOwner = #session.UserID#
-    and CircleSort = '0'
+    Select primaryCircle from userTbl
+    where userID = #session.UserID#
   </cfquery>
-  <cfset session.myCircleID=#qGetEveryoneCircle.CircleID#>
+  <cfset session.myCircleID=#qGetEveryoneCircle.primaryCircle#>
 
     <!---     Start page here --->
     <cfquery name="qGetUserSubType">

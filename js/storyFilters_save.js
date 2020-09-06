@@ -29,13 +29,11 @@ var getAllStories = function () {
   } else {
     var aTraditions = 'off';
   }
-  var primaryCircle = localStorage.getItem("primaryCircle");
-  var aPrimaryCircle = Number(primaryCircle);
   // create an instance of the proxy. 
   var ab = new StoryFilter();
   ab.setCallbackHandler(populateHomeFeed);
   ab.setErrorHandler(myErrorHandler);
-  ab.getAllStories(userID, aPrimaryCircle, aStories, aInterviews, aRecipes, aTraditions);
+  ab.getAllStories(userID, aStories, aInterviews, aRecipes, aTraditions);
 
 }
 
@@ -68,13 +66,11 @@ var getMyStories = function (userID) {
   } else {
     var aTraditions = 'off';
   }
-  var primaryCircle = localStorage.getItem("primaryCircle");
-  var aPrimaryCircle = Number(primaryCircle);
   // create an instance of the proxy. 
   var ab = new StoryFilter();
   ab.setCallbackHandler(populateHomeFeed);
   ab.setErrorHandler(myErrorHandler);
-  ab.getMyStories(userID, aPrimaryCircle, aStories, aInterviews, aRecipes, aTraditions);
+  ab.getMyStories(userID, aStories, aInterviews, aRecipes, aTraditions);
 
 }
 
@@ -106,15 +102,11 @@ var getOtherStories = function (userID) {
   } else {
     var aTraditions = 'off';
   }
-
-  var primaryCircle = localStorage.getItem("primaryCircle");
-  var aPrimaryCircle = Number(primaryCircle);
-
   // create an instance of the proxy. 
   var ab = new StoryFilter();
   ab.setCallbackHandler(populateHomeFeed);
   ab.setErrorHandler(myErrorHandler);
-  ab.getOtherStories(userID, aPrimaryCircle, aStories, aInterviews, aRecipes, aTraditions);
+  ab.getOtherStories(userID, aStories, aInterviews, aRecipes, aTraditions);
 
 }
 
@@ -122,9 +114,7 @@ var getOtherStories = function (userID) {
 var populateStoryList = function (stList) {
   var StoryDiv = document.getElementById("StoryDiv");
   if (stList === "No pages fit your selection.") {
-    console.log('populateStoryList(stList) says: ', stList);
     StoryDiv.innerHTML = "No pages fit your selection."
-    console.log('storyDiv.innerHTML says: ', StoryDiv.innerHTML);
     return;
   } else {
     var itemCode = '';
@@ -167,11 +157,8 @@ var populateHomeFeed = function (rawData) {
   var StoryDiv = document.getElementById("StoryDiv");
   console.log('running populateHomeFeed in storyFilters');
   // Read the data from ColdFusion and create the HTML for the feed
-  if (rawData === "No pages fit your selection.") {
-    console.log('populateStoryList(rawData) says: ', rawData);
-    StoryDiv.innerHTML = "No pages fit your selection."
-    console.log('storyDiv.innerHTML says: ', StoryDiv.innerHTML);
-    return;
+  if (rawData === 'No pages fit your selection.') {
+    return
   }
   var dataLength = rawData.DATA.length - 1;
   var data = '';

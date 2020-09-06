@@ -29,9 +29,22 @@
   <cfquery name="qGetMyStories">
     Select StoryTbl.StoryTitle, StoryTbl.StoryID
     from StoryTbl
-    where StoryTbl.Userid = #session.userID#
+    where 
+    (
+    StoryTbl.Userid = #session.userID#  
+    OR 
+    (StoryTbl.Userid <> #session.userID# 
+    AND 
+      (CircleID in
+        (select CircleID from CircleMemberTbl
+        where MemberID = #session.UserID#) )
+      ) 
+    AND ( StoryTbl.StoryID not in
+        (Select StoryID from ExcludeTbl
+        where ExcludeUser = #session.UserID#)
+        )
+    )
     and StoryID NOT IN
-
     ( Select BookContentTbl.StoryID
     from BookTbl
     join BookContentTbl

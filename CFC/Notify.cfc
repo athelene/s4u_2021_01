@@ -40,7 +40,7 @@
 
     <cffunction name="getBookView" access="remote" returnFormat="json" output="false">
         <cfargument name="Userid" required="yes" type="numeric" default="0" />
-        <cfargument name="LastTCView" required="yes" type="string" default="0" />
+        <cfargument name="LastBookView" required="yes" type="string" default="0" />
         <cfquery name="qBookViews">
 
             Select count(BookTbl.BookID) AS itemCount
@@ -51,17 +51,21 @@
 
             AND
 
-            BookTbl.BookCreateDate > '#arguments.LastTCView#'
+            BookTbl.BookCreateDate > '#arguments.LastBookView#' 
+
+            AND  
+
+            BookTbl.timecapsuledate IS NULL
 
             )
 
             OR
 
-            (timecapsuledate IS NOT NULL
+            (timecapsuledate IS NULL
 
             AND
 
-            BookTbl.BookCreateDate > '#arguments.LastTCView#'
+            BookTbl.BookCreateDate > '#arguments.LastBookView#'
 
             AND
             (

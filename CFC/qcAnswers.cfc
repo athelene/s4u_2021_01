@@ -9,7 +9,7 @@
                     <cfquery name="qQCAnswers">
                         Select VPAnswerTbl.UserID, VPAnswerTbl.ViewPointID, VPAnswerTbl.VPAnswer,
                         UserTbl.UserDisplayName, UserTbl.UserMediaLoc,
-                        UserTbl.UserFirst, UserTbl.UserLast
+                        UserTbl.UserFirst, UserTbl.UserLast, VPAnswerTbl.VPAnswerID
                         from VPAnswerTbl
                         Left join UserTbl
                         on VPAnswerTbl.UserID = UserTbl.UserID
@@ -23,7 +23,7 @@
                         UNION
                         Select VPAnswerTbl.UserID, VPAnswerTbl.ViewPointID, VPAnswerTbl.VPAnswer,
                         UserTbl.UserDisplayName, UserTbl.UserMediaLoc,
-                        UserTbl.UserFirst, UserTbl.UserLast
+                        UserTbl.UserFirst, UserTbl.UserLast, VPAnswerTbl.VPAnswerID
                         from VPAnswerTbl
                         Left join UserTbl
                         on VPAnswerTbl.UserID = UserTbl.UserID
@@ -32,7 +32,7 @@
                         Order by UserLast, UserFirst
                     </cfquery>
                     <cfif qQCAnswers.RecordCount IS 0>
-                        <cfreturn 'No answers' />
+                        <cfreturn #arguments.QCID# />
                         <cfelse>
                             <cfreturn qQCAnswers />
                     </cfif>

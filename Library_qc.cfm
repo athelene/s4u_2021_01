@@ -66,6 +66,7 @@
       <div class="card-body" id="#qcListDiv#">
 
       </div>
+
     </div>
 
   </div>
@@ -75,6 +76,7 @@
 </div>
 <!-- Accordion wrapper -->
           </cfloop>
+
       </cfoutput>
       <BR><BR><BR><BR>
       <cfinclude template="/FooterMobile.cfm">

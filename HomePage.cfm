@@ -19,6 +19,21 @@
   <cfajaxproxy cfc="cfc.qcAnswers" jsclassname="qcAnswers" />
 
 </head>
+<cfquery name="qCheckUserInfo">
+  Select UserFirst, UserLast, UserDisplayName 
+  from UserTbl 
+  where userID = #session.userID#
+</cfquery>
+
+<cfif qCheckUserInfo.UserFirst IS ''>
+<cflocation url = "/users/EditUserProfile.cfm">
+</cfif>
+<cfif qCheckUserInfo.UserLast IS ''>
+<cflocation url = "/users/EditUserProfile.cfm">
+</cfif>
+<cfif qCheckUserInfo.UserDisplayName IS ''>
+<cflocation url = "/users/EditUserProfile.cfm">
+</cfif>
 <cfquery name="qGetQCToday">
   select ViewpointID, Viewpointq
   from ViewpointTbl
@@ -198,6 +213,7 @@
 <!--- Start pages list  --->
 
     <cfoutput>
+
       <div id="StoryDiv">
 
       </div>
@@ -239,11 +255,10 @@
                 $(function () {
                   $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
                 });
-                getUserInfo(<cfoutput>#session.userID#</cfoutput>);
-                newPages(<cfoutput>#session.userid#,'#session.LastPageView#','#session.LastBookView#'</cfoutput>);
+                getUserInfo(<cfoutput>#session.userid#</cfoutput>);
+                newPages(<cfoutput>#session.userid#,'#session.LastBookView#'</cfoutput>);
                 getMyAnswer(<cfoutput> #todaysQC#, #session.userID# </cfoutput>);
-
-                getAllStories(<cfoutput>#session.userid#</cfoutput>);
+                getAllStories();
                         // End of document ready
                       });
         </script>

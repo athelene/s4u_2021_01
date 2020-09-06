@@ -74,6 +74,7 @@ var getCircleMembers = function (CircleID) {
 // Callback function to display the results of the getCircleMembers 
 // function (for editing Circles). 
 var populateCircleMembers = function (member) {
+  var primaryCircle = localStorage.getItem("primaryCircle");
   console.log('starting populateCircleMembers');
   var CircleDiv = document.getElementById("CircleDiv");
   if (member.DATA.length === 0) {
@@ -90,8 +91,8 @@ var populateCircleMembers = function (member) {
         '<div class="list-group s4u-LibraryBlock">' +
         '<span class="newSaltUser">' +
         '<h4>' 
-        if (memCircleID !== window.MyCircleID) {
-          console.log("memCircleID is: ", memCircleID, "and window.MyCircleID is: ", window.MyCircleID);
+        if (memCircleID !== primaryCircle) {
+          console.log("memCircleID is: ", memCircleID, "and localStorage.primaryCircle is: ", primaryCircle);
           itemCode = itemCode + 
         '<button class="btn-sm btn btn-secondary" onclick="removeFromCircle(' +
         memRemID + ', ' + memCircleID + ')' + 
@@ -121,7 +122,6 @@ var populateCircleMembers = function (member) {
 // GET MEMBER LIST FOR Editing Circle 
 var getMemberList = function (CircleID) {
   console.log('starting getMemberList');
-  console.log('window.primaryCircle is: ', window.primaryCircle);
   var m = new mem(CircleID);
   m.setCallbackHandler(populateCircleMembers);
   m.setErrorHandler(myErrorHandler);
@@ -190,8 +190,8 @@ var removeFromCircle = function (remID, circleID) {
 var remUpdateList = function (data) {
   var setCircleID = data.DATA[0][0];
   console.log('setCircleID is: ', setCircleID);
-  document.getElementById("searchInput").value = '';
-  document.getElementById("searchDiv").innerHTML = '';
+  // document.getElementById("searchInput").value = '';
+  // document.getElementById("searchDiv").innerHTML = '';
   console.log('search input and div should be blank');
   console.log('about to run getCircleMembers');
   getCircleMembers(setCircleID);

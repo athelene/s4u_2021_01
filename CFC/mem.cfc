@@ -18,7 +18,7 @@
 				AND CircleMemberTbl.MemberID not in
 				(select ExcludeUser from ExcludeTbl
 				where storyID = #session.storyID#)
-				and CircleMemberTbl.status = 'Accepted'
+				and (CircleMemberTbl.status = 'Accepted' or CircleMemberTbl.status = 'Added')
 
 				UNION
 
@@ -33,7 +33,7 @@
 				AND CircleMemberTbl.MemberID in
 				(select ExcludeUser from ExcludeTbl
 				where storyID = #session.storyID#)
-				and CircleMemberTbl.status = 'Accepted'
+				and (CircleMemberTbl.status = 'Accepted' or CircleMemberTbl.status = 'Added')
 
 				order by Last, First
 			</cfquery>
@@ -49,7 +49,7 @@
 					join UserTbl
 					on CircleMemberTbl.MemberID = UserTbl.UserID
 					where CircleTbl.CircleID = #CircleID#
-					and CircleMemberTbl.status = 'Accepted'
+					and (CircleMemberTbl.status = 'Accepted' or CircleMemberTbl.status = 'Added')
 
 					UNION
 
@@ -62,7 +62,7 @@
 					join UserTbl
 					on CircleMemberTbl.MemberID = UserTbl.UserID
 					where CircleTbl.CircleID = #CircleID#
-					and CircleMemberTbl.status = 'Accepted'
+					and (CircleMemberTbl.status = 'Accepted' or CircleMemberTbl.status = 'Added')
 
 					order by Last, First
 				</cfquery>
@@ -109,7 +109,7 @@
 			join UserTbl
 			on CircleMemberTbl.MemberID = UserTbl.UserID
 			where CircleTbl.CircleID = #arguments.EveryoneCircle#
-			and CircleMemberTbl.status = 'Accepted'
+			and (CircleMemberTbl.status = 'Accepted' or CircleMemberTbl.status = 'Added')
 
 			and
 

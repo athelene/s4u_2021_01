@@ -107,7 +107,7 @@ var getOtherTCs = function () {
 // CALLBACK FUNTION 
 var populateBookList = function (bkList) {
   var BookDiv = document.getElementById("BookDiv");
-  if (bkList === "No books found.") {
+  if (bkList === "You haven't created any yet.") {
     BookDiv.innerHTML = "No books or time capsules found."
     return;
   } else {

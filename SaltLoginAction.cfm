@@ -38,20 +38,17 @@
     <cfset session.loggedin=true>
       <cfset session.userID=#qGetUserId.Userid#>
         <cfset session.userEmail=#qGetUserId.UserEmail#>
-          <cfquery name=qGetEveryoneCircle>
-            Select CircleID from CircleTbl
-            where CircleOwner = #session.Userid#
-            AND CircleSort = '0'
-          </cfquery>
-          <cfset session.MyCircleID=#qGetEveryoneCircle.CircleID#>
+
+          <cfset session.MyCircleID=#qgetUserId.primaryCircle#>
             <cfscript>
               session.todayis = Now();
               session.LastPageView = Now();
               session.LastBookView = Now();
               session.LastTCView = Now();
               session.LastCircleView = Now();
+              getUserInfo(<cfoutput>#session.userID#</cfoutput>);
             </cfscript>
-            <cflocation url="Redirect.cfm?goToPage=Home" />
+            <cflocation url="HomePage.cfm" />
 
             <cfelse>
               <cfset session.errordup="Incorrect Password" />

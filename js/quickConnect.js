@@ -1,4 +1,4 @@
-// Use an asynchronous call to bring back all story media from the ColdFusion server.
+// Use an asynchronous call to bring back all qc info from the ColdFusion server.
 var getQCAnswers = function (QCID, EveryoneCircle, userID) {
   console.log('starting getQCAnswers');
   // create an instance of the proxy. 
@@ -16,11 +16,8 @@ var populateQCAnswers = function (answerList) {
     // itemCode will update the answerDiv
     var itemCode = '';
 
-    if (answerList === 'No answers') {
-      var dispDiv = 'qcListDiv' + answerList.DATA[k][1];
-      var qcAnswerDiv = document.getElementById(dispDiv);
-      var itemCode = 'No one has answered yet.';
-      qcAnswerDiv.innerHTML = itemCode;
+    if (typeof (answerList) === 'number') {
+
       return
     } else {
     for (k = 0; k < answerList.DATA.length; k++) {
@@ -36,12 +33,16 @@ var populateQCAnswers = function (answerList) {
       itemCode = itemCode +
         '<div class="qcListDiv"' + '>' +
         qcUserDisplayName + ': ' +
-        qcAnswer +
+        qcAnswer + 
         '</div>'
-      console.log('itemCode is: ', itemCode);
-      qcAnswerDiv.innerHTML = itemCode;
-
     }
+    itemCode = itemCode + 
+    '<br><a href="editQCAnswer.cfm?qcAnswerID=' + answerList.DATA[0][1] + 
+    '" class="btn btn-sm btn-secondary">' + 
+    '<i class="far fa-edit icon-align-center"></i>' +
+    '</a>' + '<BR>'
+    console.log('itemCode is: ', itemCode);
+    qcAnswerDiv.innerHTML = itemCode;
     return;
   }
 }
@@ -62,7 +63,7 @@ var saveMyAnswerCheck = function (data) {
   console.log('answer added');
   document.getElementById('QCAnswer').style.display = 'none';
   document.getElementById('saveQCBtn').style.display = 'none';
-  document.getElementById('editQCBtn').style.display = 'inline';
+  // document.getElementById('editQCBtn').style.display = 'inline';
   return;
 }
 
@@ -71,8 +72,8 @@ var getMyAnswer = function (qcID, userID) {
   if (qcID === 1) {
      document.getElementById('QCAnswer').style.display='none';
      document.getElementById('saveQCBtn').style.display='none';
-     document.getElementById('editQCBtn').style.display='none'; 
-     document.getElementById('saveEditQCBtn').style.display='none';  
+    //  document.getElementById('editQCBtn').style.display='none'; 
+    //  document.getElementById('saveEditQCBtn').style.display='none';  
     return;
   }
   // create an instance of the proxy. 
@@ -96,8 +97,8 @@ var populateMyAnswer = function (data) {
     document.getElementById('QCAnswer').value = data.DATA[0][0];
     document.getElementById('QCAnswer').style.display = 'none';
     document.getElementById('saveQCBtn').style.display = 'none';
-    document.getElementById('editQCBtn').style.display = 'inline';
-    document.getElementById('saveEditQCBtn').style.display = 'none';
+    // document.getElementById('editQCBtn').style.display = 'inline';
+    // document.getElementById('saveEditQCBtn').style.display = 'none';
   }
   return;
 }
@@ -119,8 +120,8 @@ var populateEditAnswer = function (myAnswer) {
   }
   document.getElementById('QCAnswer').style.display = 'inline';
   document.getElementById('saveQCBtn').style.display = 'none';
-  document.getElementById('editQCBtn').style.display = 'none';
-  document.getElementById('saveEditQCBtn').style.display = 'inline';
+  // document.getElementById('editQCBtn').style.display = 'none';
+  // document.getElementById('saveEditQCBtn').style.display = 'inline';
   return;
 }
 
@@ -144,8 +145,8 @@ var saveMyEditCheck = function (data) {
   console.log('answer updated');
   document.getElementById('QCAnswer').style.display = 'none';
   document.getElementById('saveQCBtn').style.display = 'none';
-  document.getElementById('editQCBtn').style.display = 'inline';
-  document.getElementById('saveEditQCBtn').style.display = 'none';
+  // document.getElementById('editQCBtn').style.display = 'inline';
+  // document.getElementById('saveEditQCBtn').style.display = 'none';
 
   return;
 }

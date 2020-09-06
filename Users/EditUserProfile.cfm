@@ -17,11 +17,10 @@
 <cfajaxproxy cfc="cfc.userImg" jsclassname="userImg" />
 
 <cfquery name="qSetEveryoneCircle">
-    Select CircleID from CircleTbl
-    where CircleOwner = #session.UserID# AND
-    CircleSort = '0'
+    Select primaryCircle from userTbl
+    where userID = #session.UserID# 
 </cfquery>
-<cfset session.myCircleID=qSetEveryoneCircle.CircleID>
+<cfset session.myCircleID=qSetEveryoneCircle.primaryCircle>
 
     <body>
 
@@ -37,7 +36,13 @@
                 <div class="card">
 
                     <h5 class="card-header bg-secondary white-text text-center py-4">
-                        <strong>Update Your Profile</strong>
+                        <strong> 
+                        <cfif qGetUserInfo.UserFirst IS '' OR qGetUserInfo.UserLast IS '' OR qGetUserInfo.UserDisplayName IS ''>
+                        You are missing information. Please update your profile.
+                        <cfelse>
+                        Update Your Profile
+                        </cfif>                        
+                        </strong>
                     </h5>
 
                     <!--Card content-->

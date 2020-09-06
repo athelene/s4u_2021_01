@@ -61,7 +61,7 @@
         <div>
 
           <cfoutput>
-
+    <cfset addStoriesToBookLink = "location.href='/stories/AddStoriesToBook.cfm?BookID=" & #url.BookID# & "'">
             <h3 class="mb-0">
               #qBookBasics.BookTitle#
             </h3>
@@ -70,12 +70,12 @@
               <br>
               <div class="btn-group bg-light" data-toggle="buttons">
 
-                <button type="button" class="btn btn-secondary btn-rounded"
-                  onClick="location.href='/books/EditBook.cfm?BookID=#session.BookID#'">Edit</button>
-                <button type="button" class="btn btn-secondary btn-rounded"
-                  onClick="location.href='/stories/AddStoriesToBook.cfm?BookID=#url.BookID#'">Add Pages</button>
-                <button type="button" class="btn btn-secondary btn-rounded"
-                  onClick="location.href='/books/ReorderStories.cfm?BookID=#session.BookID#'">Reorder Pages</button>
+                <a type="button" class="btn btn-secondary btn-rounded"
+                  href="/books/EditBook.cfm?BookID=<cfoutput>#session.BookID#</cfoutput>">Edit</a>
+                <a type="button" class="btn btn-secondary btn-rounded"
+                  href="/stories/AddStoriesToBook.cfm?BookID=<cfoutput>#url.BookID#</cfoutput>">Add Pages</a>
+                <a type="button" class="btn btn-secondary btn-rounded"
+                  href="/books/ReorderStories.cfm?BookID=<cfoutput>#session.BookID#</cfoutput>">Reorder Pages</a>
               </div>
               <cfelse>
 
@@ -92,13 +92,12 @@
             <BR>
             <div class="btn-group" data-toggle="buttons">
 
-              <button type="button" class="btn btn-secondary"
-                onClick="location.href='/books/EditBook.cfm?BookID=#session.BookID#'">Edit</button>
-              <button type="button" class="btn btn-secondary"
-                onClick="location.href='/stories/AddStoriesToBook.cfm?BookID=#url.BookID#'">Add Pages</button>
-              <button type="button" class="btn btn-secondary"
-                onClick="location.href='/books/ReorderStories.cfm?BookID=#session.BookID#'">Reorder Pages</button>
-            </div>
+              <a type="button" class="btn btn-secondary btn-rounded"
+                  href="/books/EditBook.cfm?BookID=<cfoutput>#session.BookID#</cfoutput>">Edit</a>
+              <a type="button" class="btn btn-secondary btn-rounded"
+                href="/stories/AddStoriesToBook.cfm?BookID=<cfoutput>#url.BookID#</cfoutput>">Add Pages</a>
+              <a type="button" class="btn btn-secondary btn-rounded"
+                href="/books/ReorderStories.cfm?BookID=<cfoutput>#session.BookID#</cfoutput>">Reorder Pages</a>            </div>
             <cfelse>
 
 
@@ -207,7 +206,7 @@
       #trim(qBookTblInfo.StoryText)#<BR />
 
       <cfif qBookTblInfo.UserID IS #session.UserID#>
-        <a class="btn btn-primary" href="/stories/editpage.cfm?StoryID=#qBookTblInfo.StoryID#" title="Edit this page">
+        <a class="btn btn-secondary" href="/stories/editpage.cfm?StoryID=#qBookTblInfo.StoryID#" title="Edit this page">
           <i class="far fa-edit icon-align-center"></i></a>
       </cfif>
       </div>
@@ -265,8 +264,7 @@
 
 
                 // Check Notifications
-                newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
-                  '#session.LastTCView#' < /cfoutput>);
+                newPages(<cfoutput>#session.userid#, '#session.LastBookView#'</cfoutput>);
 
                   // End of document ready
                 });

@@ -204,7 +204,7 @@
                <cfset wClause=wClause & ')'>
           </cfif>
 
-          <cfquery name="qOtherStories">
+          <cfquery name="qAllStories">
                Select StoryTbl.StoryID, trim(StoryTbl.StoryTitle) as StoryTitle,
                trim(Storytbl.StoryText) as StoryText, StoryTbl.Userid,
                StoryTbl.StoryTypeID, Storytbl.StoryDate,
@@ -218,34 +218,40 @@
                on StoryTbl.UserID = UserTbl.UserID
                left join MediaTbl
                on (StoryTbl.StoryID = MediaTbl.StoryID AND MediaTbl.FeatureMedia = 1)
+               where
 
-               where 
-  
-               (#wClause# 
-               AND StoryTbl.CircleID = #arguments.aPrimaryCircle# 
+              ( (mediaTbl.FeatureMedia = 1 or mediaTbl.FeatureMedia IS NULL)
+
+               AND
+               #wClause# 
+               AND 
+               StoryTbl.CircleId = #arguments.aPrimaryCircle# )
+
+               OR ( (mediaTbl.FeatureMedia = 1 or mediaTbl.FeatureMedia IS NULL) AND
+
+
+               #wClause#
+               AND
+               (
+               (StoryTbl.CircleID in
+               (select CircleID from CircleMemberTbl
+               where MemberID = #arguments.aUserID#) )
+
+               AND ( StoryTbl.StoryID not in
+               (Select StoryID from ExcludeTbl
+               where ExcludeUser = #arguments.aUserID#)
                )
+               ) )
 
-                    OR (
+               OR (StoryTbl.UserID = #arguments.aUserID#)
 
-                    #wClause#
-                    AND
-                    (
-                    (CircleID in
-                    (select CircleID from CircleMemberTbl
-                    where MemberID = #session.UserID#) )
-
-                    AND ( StoryTbl.StoryID not in
-                    (Select StoryID from ExcludeTbl
-                    where ExcludeUser = #session.UserID#)
-                    )
-                    ) )
-
-                    order by StoryDate Desc, StoryTitle
+               order by StoryDate Desc, StoryTitle
           </cfquery>
-          <cfif qOtherStories.RecordCount IS 0>
+
+          <cfif qAllStories.RecordCount IS 0>
                <cfreturn "No pages fit your selection." />
                <cfelse>
-                    <cfreturn qOtherStories />
+                    <cfreturn qAllStories />
           </cfif>
      </cffunction>
 </cfcomponent>
