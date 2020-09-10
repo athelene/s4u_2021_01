@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 
+<>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,16 +17,7 @@
 
     <body>
         <cfparam name="session.errordup" default="">
-        <cfset notifydatetime=CREATEODBCDATETIME( Now() ) />
-
-        <cfquery name="qGetInviterInfo">
-        Select InvitedBy, primaryCircle, InvitationType 
-        from InvitationTbl 
-        left join UserTbl 
-        on InvitationTbl.InvitedBy = UserTbl.UserID 
-        where InviteEmail = '#form.Email#'
-        AND InvitedBy = #form.Sender#
-        </cfquery>
+            <cfset notifydatetime=CREATEODBCDATETIME( Now() ) />
 
             <body>
                 <h1>Sign Up for Stories For Us</h1>
@@ -47,21 +39,28 @@
                             LastPageView, LastBookView, LastTCView, LastCircleView)
                             VALUES(
                             <cfqueryparam value="E" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam cfsqltype="CF_SQL_VARCHAR" value="#passwordSalt#">,
-                            <cfqueryparam cfsqltype="CF_SQL_VARCHAR"
-                                value="#hash(form.Password & passwordSalt,'SHA-512')#">,
-                            <cfqueryparam value="#trim(form.UserFirst)#" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam value="#trim(form.UserLast)#" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam value="#trim(form.UserDisplayName)#" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam value="#trim(form.Email)#" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam value="#qGetInviterInfo.InvitationType#" cfsqltype="CF_SQL_INTEGER">,
-                            <cfqueryparam value="#form.email#" cfsqltype="CF_SQL_VARCHAR">,
-                            <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
-                            <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
-                            <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
-                            <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">,
-                            <cfqueryparam value="#notifydatetime#" cfsqltype="cf_sql_timestamp">
-                            )
+                                <cfqueryparam cfsqltype="CF_SQL_VARCHAR" value="#passwordSalt#">,
+                                    <cfqueryparam cfsqltype="CF_SQL_VARCHAR"
+                                        value="#hash(form.Password & passwordSalt,'SHA-512')#">,
+                                        <cfqueryparam value="#trim(form.UserFirst)#" cfsqltype="CF_SQL_VARCHAR">,
+                                            <cfqueryparam value="#trim(form.UserLast)#" cfsqltype="CF_SQL_VARCHAR">,
+                                                <cfqueryparam value="#trim(form.UserDisplayName)#"
+                                                    cfsqltype="CF_SQL_VARCHAR">,
+                                                    <cfqueryparam value="#trim(form.Email)#" cfsqltype="CF_SQL_VARCHAR">
+                                                        ,
+                                                        <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
+                                                            <cfqueryparam value="#form.email#"
+                                                                cfsqltype="CF_SQL_VARCHAR">,
+                                                                <cfqueryparam value="1" cfsqltype="CF_SQL_INTEGER">,
+                                                                    <cfqueryparam value="#notifydatetime#"
+                                                                        cfsqltype="cf_sql_timestamp">,
+                                                                        <cfqueryparam value="#notifydatetime#"
+                                                                            cfsqltype="cf_sql_timestamp">,
+                                                                            <cfqueryparam value="#notifydatetime#"
+                                                                                cfsqltype="cf_sql_timestamp">,
+                                                                                <cfqueryparam value="#notifydatetime#"
+                                                                                    cfsqltype="cf_sql_timestamp">
+                                                                                    )
                         </cfquery>
 
                         <cfcatch type="any">
@@ -75,12 +74,6 @@
                         Values
                         (#rGetUserID.generatedkey#, 'Everyone Circle', '0')
                     </cfquery>
-                    <cfquery name="qUpdateUserCircle">
-                    update UserTbl 
-                    set primaryCircle = #circleResult.generatedkey# 
-                    where userID = #rGetUserID.generatedkey#
-                    </cfquery>
-
                     <cfif isDefined("form.Sender")>
                         <cfoutput>#form.Sender# is defined</cfoutput>
                         <cfquery name="qUpdateInvitationTbl">
@@ -88,33 +81,6 @@
                             SET ConvertDate = GETDATE()
                             WHERE InviteEmail = '#form.Email#'
                             AND InvitedBy = #form.Sender#
-                        </cfquery>
-                    <cfset session.TodayIs=datetimeformat(now(), "YYYY-MM-DD HH:nn:ss" ) />
-
-                        <cfquery name="qUpdateInviterCircle">
-                        Insert into CircleMemberTbl 
-                        (CircleID, MemberID, InvitedBy, AcceptedDate, Status) 
-                        Values  
-                        (
-                        <cfqueryparam value="#qGetInviterInfo.primaryCircle#" cfsqltype="CF_SQL_INTEGER">,
-                        <cfqueryparam value="#rGetUserID.generatedkey#" cfsqltype="CF_SQL_INTEGER">,
-                        <cfqueryparam value="#qGetInviterInfo.InvitedBy#" cfsqltype="CF_SQL_INTEGER">,
-                        <cfqueryparam value="#session.TodayIs#" cfsqltype="CF_SQL_DATE">,
-                        <cfqueryparam value="Accepted" cfsqltype="CF_SQL_VARCHAR"> 
-                        )
-                        </cfquery>
-
-                        <cfquery name="qUpdateInvitedCircle">
-                        Insert into CircleMemberTbl 
-                        (CircleID, MemberID, InvitedBy, AcceptedDate, Status) 
-                        Values  
-                        (
-                        <cfqueryparam value="#circleResult.generatedkey#" cfsqltype="CF_SQL_INTEGER">,
-                        <cfqueryparam value="#qGetInviterInfo.InvitedBy#" cfsqltype="CF_SQL_INTEGER">,
-                        <cfqueryparam value="#rGetUserID.generatedkey#" cfsqltype="CF_SQL_INTEGER">,
-                        <cfqueryparam value="#session.TodayIs#" cfsqltype="CF_SQL_DATE">,
-                        <cfqueryparam value="Accepted" cfsqltype="CF_SQL_VARCHAR"> 
-                        )
                         </cfquery>
                         <cfelse>
                             <cfoutput>No sender detected</cfoutput>
@@ -124,9 +90,6 @@
                         <cfset session.userID=#rGetUserID.generatedkey#>
                             <cfset session.userEmail=#form.Email#>
                                 <cfset session.MyCircleID=#circleResult.generatedkey#>
-
-
-
 
                                     <cflocation url="/homepage.cfm"> --->
 
