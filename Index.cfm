@@ -32,7 +32,7 @@
 
 
       <!-- Material form login -->
-      <div class=" row w-25 d-flex justify-content-center">
+      <div class=" row d-flex justify-content-center">
         <h1>Let's share a story!</h1>
         <h1>Sign in to Stories for Us</h1>
         <cfif isDefined("session.errordup")>
@@ -75,7 +75,7 @@
 
       <!-- Social login -->
       <h2>or sign in with:
-        <a type="button" class="btn-floating btn-secondary btn-tw" href="#authurl#">
+        <a type="button" class="btn bg-secondary" href="#authurl#">
           Google
         </a>
       </h2>
