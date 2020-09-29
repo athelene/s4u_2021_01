@@ -10,10 +10,13 @@
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Create
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/Stories/StoryStarter.cfm" title="Create a new page">New Page</a>
-        <a class="dropdown-item pb-0" href="/Books/NewTimeCapsule.cfm" title="Create a new book or Time Capsule">New
-          Book/Time Capsule</a>
+      <div class="dropdown-menu text-uppercase">
+        <a class="dropdown-item font-weight-bold pt-2" href="/Stories/StoryStarter.cfm" title="Create a new page">Memory</a>
+        <a class="dropdown-item small ml-3" href="/Stories/InterviewStoryStarter.cfm" title="Create a new page">Interview</a>
+        <a class="dropdown-item small ml-3" href="/Stories/RecipeStoryStarter.cfm" title="Create a new page">Recipe</a>
+        <a class="dropdown-item small ml-3" href="/Stories/TraditionStoryStarter.cfm" title="Create a new page">Tradition</a>
+        <hr class="my-2">
+        <a class="dropdown-item font-weight-bold pb-0" href="/Books/NewTimeCapsule.cfm" title="Create a new book or Time Capsule">Story</a>
       </div>
     </div>
 

@@ -27,7 +27,7 @@
   <!--- Start Nav --->
   <cfinclude template="/topNavSmall.cfm">
 
-    <h2>Books and Time Capsules</h2>
+    <h2>Stories</h2>
 
     <div class="btn-group bg-light" data-toggle="buttons">
       <label class="btn btn-secondary btn-rounded form-check-label active">
@@ -46,7 +46,7 @@
     <!-- Material checked -->
     <div class="switch sortContainer">
       <span class="sortContainer">
-        Books <label>
+        Stories <label>
           <input type="checkbox" checked id="showBooks" value="on">
           <span class="lever"></span>
         </label>

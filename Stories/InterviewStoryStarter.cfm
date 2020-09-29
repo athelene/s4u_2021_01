@@ -44,7 +44,7 @@
       <ul class="nav nav-pills justify-content-center nav-primary">
         <li class="nav-item">
           <a class="nav-link pt-3" href="/stories/storystarter.cfm">
-            Story
+            Memory
           </a>
         </li>
         <li class="nav-item">
@@ -75,7 +75,7 @@
 
     <cfif storyUser IS #session.UserID# AND session.storyID IS 0>
       <!-- Button trigger modal -->
-      <button id="featureBtn" type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
+      <button id="featureBtn" type="button" class="btn btn-secondary btn-sm d-none" data-toggle="modal"
         data-target="#featureModal" onclick="updateMedia(<cfoutput>#session.UserID#</cfoutput>)">
         Select Feature Media
       </button>

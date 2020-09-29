@@ -45,7 +45,7 @@
         <ul class="nav nav-pills justify-content-center nav-primary">
           <li class="nav-item">
             <a class="nav-link active pt-3" href="/stories/storystarter.cfm">
-              Story
+              Memory
             </a>
           </li>
           <li class="nav-item">
