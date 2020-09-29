@@ -219,3 +219,37 @@ nav {
         }
     }
 }
+
+.circle, .story-page-story {
+    display: inline-block;
+    height: 10rem;
+    width: 10rem;
+    background: $white;
+    border-radius: 50%;
+    border: solid 2px $primary;
+
+    a {
+        display: inline-block;
+        margin-top: calc(50% - 0.5rem);
+        text-align: center;
+        width: 96%;
+        padding-left: 2%;
+        font-weight: bold;
+        color: $dark;
+    }
+
+    &:hover {
+        border-color: $dark;
+        background: darken($white, 5%);
+        cursor: pointer;
+    }
+}
+
+.story-page-story {
+    border-radius: 0.25rem;
+    height: auto;
+
+    a {
+        margin-top: 0.75rem;
+    }
+}

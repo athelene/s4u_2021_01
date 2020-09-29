@@ -123,15 +123,15 @@ var populateBookList = function (bkList) {
       var bkUserDisplayName = bkList.DATA[k][7];
 
       itemCode = itemCode +
-        '<div class="list-group QCText">' +
-        '<a href="/Books/BookReader.cfm?BookID=' + bkID + '"' +
-        ' class="list-group-item list-group-item-action">'
-      if (bkTCDate != null) {
-        itemCode = itemCode + '<i class="fa fa-hourglass-start fa-lg" aria-hidden="true"></i> ';
-      }
-      itemCode = itemCode +
-        bkTitle + ', ' + bkCreateDate +
-        '</a>' +
+        '<div class="story-page-story">' +
+          '<a href="/Books/BookReader.cfm?BookID=' + bkID + '"' +
+          '>'
+          if (bkTCDate != null) {
+            itemCode = itemCode + '<i class="fa fa-hourglass-start fa-lg" aria-hidden="true"></i> ';
+          }
+          itemCode = itemCode +
+          bkTitle + ', ' + bkCreateDate +
+          '</a>' +
         '</div>'
       console.log(itemCode);
     }

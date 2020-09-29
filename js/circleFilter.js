@@ -46,11 +46,11 @@ var populateCircles = function (cirList) {
           '</div>';
         } else {
         primaryCode = 
-        '<div class="s4u-LibraryBlock s4u-delete-circle-btn">' + 
-        '<a href="/circles/editcircle.cfm?CircleID=' + cirID + '"' +
-        ' class="list-group-item list-group-item-action">' +
-        cirCircleName +
-        '</a>' +
+        '<div class="circle">' + 
+          '<a href="/circles/editcircle.cfm?CircleID=' + cirID + '"' +
+          'class="text-truncate">' +
+          cirCircleName +
+          '</a>' +
         '</div>';
     }
 

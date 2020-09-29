@@ -68,6 +68,8 @@
             </label>
           </span>
         </div>
+
+        <hr>
     
         <!-- Books-->
         <cfoutput>
