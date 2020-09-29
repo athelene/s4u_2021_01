@@ -158,7 +158,7 @@
           </div>
         </div>
   
-        <label class="mt-2">Story</label>
+        <label class="mt-2">Memory</label>
         <textarea name="StoryText" id="StoryText"></textarea>
   
         <script>
