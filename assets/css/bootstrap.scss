@@ -1,0 +1,19 @@
+/* Import Dependencies */
+@import "./bootstrap_src/scss/bootstrap";
+@import "./variables.scss";
+
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "alert": darken($light-grey, 3%),
+    "text-primary": $text-primary,
+    "text-secondary": $text-secondary,
+    "light-grey": $light-grey
+);
+
+$input-focus-border-color: $secondary;
+$input-focus-box-shadow: none;
+
+/* Recompile Bootstrap with our changes */
+@import "./bootstrap_src/scss/bootstrap";

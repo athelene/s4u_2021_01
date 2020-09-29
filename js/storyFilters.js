@@ -178,13 +178,20 @@ var populateHomeFeed = function (rawData) {
   for (k = 0; k < rawData.DATA.length; k++) {
     console.log('k11 is: ', rawData.DATA[k][11]);
     data = data +
+
+      // Main Story Wrapper
+      '<div class="story col-12 col-md-6 col-lg-4 col-xl-3">' +
+
+      // Card
+      '<div class="card">' +
+
       // Set up title area
-      '<div id="titleDiv" class="HomeTitleDiv">' +
+      '<div id="titleDiv" class="card-body pb-2">' +
 
       //   Set link to go to the page for this storyid
       '<a href="/Stories/Story.cfm?StoryID=' + rawData.DATA[k][0] + '" ' +
-      'class="btn btn-information btn-lg btn-block text-left">' +
-      '<h4 class="h4-responsive">'
+      'class="text-text-primary">' +
+      '<h5>'
 
     //   Add in interviewee if storytype is 2
     if (rawData.DATA[k][4] === 2) {
@@ -201,17 +208,42 @@ var populateHomeFeed = function (rawData) {
     }
 
     data = data +
-      '</h4>' +
+      '</h5>' +
       '</a>' +
       '</div>' +
 
-      '<div id="outlineDiv" class=bg-light>' +
+      '<div id="outlineDiv">' +
 
-      '<div class="s4u-div-inline">'
+      '<div class="s4u-div-inline">';
+
+    // Format a standard Page
+    //  if (rawData.DATA[k][4] === 1) {
+
+    data = data +
+    '<div id="mediaDiv" class="HomeMediaDiv">';
+
+    if (rawData.DATA[k][11] !== null && rawData.DATA[k][14] === 2) {
+      data = data + '<img src="' +
+        rawData.DATA[k][11] +
+        '" class="img-responsive w-100 img-fluid" style="max-height: 15rem;" alt="...">' +
+        '</img>' +
+        '</div>' 
+    };
+
+    if (rawData.DATA[k][11] !== null && rawData.DATA[k][14] === 1) {
+      data = data + '<br />' +
+        '<video class="video-Sizer" controls />' +
+        '<source src="' +
+        rawData.DATA[k][11] +
+        '" preload />' +
+        'Your browser does not support the video tag.' +
+        '</video>' +
+        '</div>'
+    };
 
     //   Create the beginning of the post with data
     data = data +
-      '<div id="postTextDiv" class="HomePostDiv">' +
+      '<div id="postTextDiv" class="card-body pb-0">' +
       '<p class="HomePagePara">'
 
     //   Include ingredients if a recipe
@@ -227,48 +259,26 @@ var populateHomeFeed = function (rawData) {
       '</p>' +
       '</div>'
 
-    // Format a standard Page
-    //  if (rawData.DATA[k][4] === 1) {
 
     data = data +
-      '<div id="mediaDiv" class="HomeMediaDiv">'
-
-    if (rawData.DATA[k][11] !== null && rawData.DATA[k][14] === 2) {
-      data = data + '<br />' + '<img src="' +
-        rawData.DATA[k][11] +
-        '" class="rounded s4u-gallery-img img-fluid" alt="...">' +
-        '</img>'
-    };
-
-    if (rawData.DATA[k][11] !== null && rawData.DATA[k][14] === 1) {
-      data = data + '<br />' +
-        '<video class="video-Sizer" controls />' +
-        '<source src="' +
-        rawData.DATA[k][11] +
-        '" preload />' +
-        'Your browser does not support the video tag.' +
-        '</video>'
-
-    };
-
-    data = data +
-
-      '</div>' +
 
       '</div>' +
       // Author image & info
 
-      '<div class="HomeAuthorDiv bg-light">' +
-      '<br />' +
+      '<hr />' +
+
+      '<div class="card-body pt-0">' +
       '<img src="' +
       rawData.DATA[k][10] +
-      '" class="rounded-circle z-depth-0 btn-circle-sm"' +
-      'alt="avatar image" Title="Created by">' +
+      '" class="rounded-circle z-depth-0 btn-circle-sm mr-2"' +
+      'alt="avatar image" style="max-width: 2.5rem; max-height: 2.5rem"  Title="Created by">' +
       'by ' +
       rawData.DATA[k][8] + ', ' +
       rawData.DATA[k][5] +
       '</div>' +
-
+      '</div>' +
+      '</div>' +
+      '</div>' +
       '</div>'
 
     console.log(k);

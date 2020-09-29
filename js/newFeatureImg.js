@@ -110,7 +110,7 @@ var updateMediaList = function (mediaList) {
   console.log(mediaList.DATA.length);
   if (mediaList.DATA.length < 2) {
     var featureBtn = document.getElementById("featureBtn");
-    featureBtn.style.display = 'none';  
+    featureBtn.style.display = 'block';  
   }
   // itemCode will update the mediaDiv
   var itemCode = '';

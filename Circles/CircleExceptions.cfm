@@ -1,6 +1,6 @@
 <!-- Button trigger circle modal-->
-<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" onClick="getMembers()"
-  data-target="#modalCircle">Except</button>
+<button type="button" class="btn btn-sm btn-secondary font-weight-bold mt-2" data-toggle="modal" onClick="getMembers()"
+  data-target="#modalCircle">EXCLUDE</button>
 
 <!-- Modal: modalCircle -->
 <div class="modal fade" id="modalCircle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

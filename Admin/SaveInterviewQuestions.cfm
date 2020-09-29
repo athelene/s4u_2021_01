@@ -10,14 +10,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <!-- MDB icon -->
   <link rel="icon" href="/img/mdb-favicon.ico" type="image/x-icon">
-  <!-- Font Awesome -->
+  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="/css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="/s4u.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/index.css">  
 
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <!--- <script src="/books/DragnDrop.js" defer></script> --->

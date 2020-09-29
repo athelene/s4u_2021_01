@@ -9,13 +9,12 @@
 
   <link rel="icon" href="/favicon-16x16.png" type="image/png" size="16x16">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" size="32x32">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link href="/css/mdb.min.css" rel="stylesheet">
-  <link href="/s4u.css" rel="stylesheet">
-  <link href="/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/index.css">  
 
   <script src="/ckeditor/ckeditor.js"></script>
-
 </head>
 
 <cfajaxproxy cfc="cfc.session" jsclassname="sessionUser" />
@@ -41,77 +40,67 @@
         Order By CircleSort
       </cfquery>
 
-      <div class="HomeOutlineDiv">
-        <ul class="nav nav-pills nav-fill">
-          <li class="nav-item">
-            <a class="nav-link " href="/stories/storystarter.cfm">
-              Story
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/stories/InterviewStoryStarter.cfm">
-              Interview
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/stories/recipeStoryStarter.cfm">
-              Recipe
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="/stories/TraditionStoryStarter.cfm">
-              Tradition
-            </a>
-          </li>
-        </ul>
-      </div>
+      <body> 
+        <div class="card card-body col-6 offset-3">
+          <div class="mb-2">
+            <ul class="nav nav-pills justify-content-center nav-primary">
+              <li class="nav-item">
+                <a class="nav-link pt-3" href="/stories/storystarter.cfm">
+                  Story
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pt-3" href="/stories/InterviewStoryStarter.cfm">
+                  Interview
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active pt-3" href="/stories/recipeStoryStarter.cfm">
+                  Recipe
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pt-3" href="/stories/TraditionStoryStarter.cfm">
+                  Tradition
+                </a>
+              </li>
+            </ul>
+          </div> 
 
-<!--- Start Gallery --->
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
+          <cfif session.StoryID IS 0>
+            <cfset storyUser=#session.UserID#>
+              <cfelse>
+                <cfset storyUser=#qMyStory.UserID#>
+          </cfif>
 
-  </div>
-</div>
+          <cfif storyUser IS #session.UserID# AND session.storyID IS 0>
+            <!-- Button trigger modal -->
+            <button id="featureBtn" type="button" class="btn btn-secondary" data-toggle="modal"
+              data-target="#featureModal" onclick="updateMedia(<cfoutput>#session.UserID#</cfoutput>)">
+              Select Feature Media
+            </button>
 
-<cfif session.StoryID IS 0>
-  <cfset storyUser=#session.UserID#>
-    <cfelse>
-      <cfset storyUser=#qMyStory.UserID#>
-</cfif>
+            <!-- Modal -->
+            <div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Click to Select Featured Media</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
 
-<cfif storyUser IS #session.UserID# AND session.storyID IS 0>
-  <!-- Button trigger modal -->
-  <BR><BR><BR><button id="featureBtn" type="button" class="btn btn-secondary" data-toggle="modal"
-    data-target="#featureModal" onclick="updateMedia(<cfoutput>#session.UserID#</cfoutput>)">
-    Select Feature Media
-  </button>
+                  <div class="modal-body" id="modalDiv">
 
-  <!-- Modal -->
-  <div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Click to Select Featured Media</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+                  </div>
 
-        <div class="modal-body" id="modalDiv">
+                </div>
 
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</cfif>
-
-
-</div>
-
-<!--- End Gallery --->
+              </div>
+            </div>
+          </cfif>
         </div>
 
         <!---     Beginning of media modal --->
@@ -128,7 +117,6 @@
 
               <form action="/stories/saveMedia.cfm" name="saveMedia" enctype="multipart/form-data" method="post">
                 <div class="modal-footer d-flex justify-content-center">
-
                   <Label class="btn btn-sm btn-secondary" title="Add a Video">
                     <i class="fas fa-video fa-lg"></i>
                     <input type="file" style="display: none;" name="selectedVFile" accept="video/*" capture="capture"
@@ -144,15 +132,12 @@
                   <button type="submit" Name="SaveFile" value="Save Changes" class="btn btn-sm btn-secondary">
                     <i class="fas fa-check"></i>
                   </button>
-
                 </div>
               </form>
             </div>
           </div>
         </div>
 
-
-        <!---     end of media modal --->
 
         <!---     Story Content --->
         <form action="/stories/StoryStarterAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
@@ -263,8 +248,5 @@
                       });
                       // End of document ready
           </script>
-
-
-          </body>
-
+  </body>
 </html>

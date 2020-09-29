@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Stories For Us</title>
-</head>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/index.css">  
+    
+  <cfajaxproxy cfc="cfc.user" jsclassname="user" />
+  </head>
 <body>
   <h1>Let's tell a story!</h1>
   <cfquery name="Authenticate">
@@ -46,7 +48,7 @@
               session.LastBookView = Now();
               session.LastTCView = Now();
               session.LastCircleView = Now();
-              getUserInfo(<cfoutput>#session.userID#</cfoutput>);
+              // getUserInfo(<cfoutput>#session.userID#</cfoutput>);
             </cfscript>
             <cflocation url="HomePage.cfm" />
 
@@ -54,8 +56,16 @@
               <cfset session.errordup="Incorrect Password" />
               <cflocation url="/index.cfm" />
               <!--- User is not authenticated. Redirect them to the login page with an error message. --->
-  </cfif>
+            </cfif>
+                <!-- Optional JavaScript -->
+                <script type="text/javascript" src="/js/s4u.js"></script>
+              <script type="text/javascript">
+                  $(document).ready(function () {
 
-</body>
+                        getUserInfo(<cfoutput>#session.userid#</cfoutput>);
+                            // End of document ready
+                          });
+                </script>
+          </body>
 
 </html>

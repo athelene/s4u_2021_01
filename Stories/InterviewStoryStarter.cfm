@@ -9,10 +9,10 @@
 
   <link rel="icon" href="/favicon-16x16.png" type="image/png" size="16x16">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" size="32x32">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link href="/css/mdb.min.css" rel="stylesheet">
-  <link href="/s4u.css" rel="stylesheet">
-  <link href="/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/index.css">  
 
   <script src="/ckeditor/ckeditor.js"></script>
 </head>
@@ -38,79 +38,69 @@
     Order By CircleSort
   </cfquery>
 
+<body> 
+  <div class="card card-body col-6 offset-3">
+    <div class="mb-2">
+      <ul class="nav nav-pills justify-content-center nav-primary">
+        <li class="nav-item">
+          <a class="nav-link pt-3" href="/stories/storystarter.cfm">
+            Story
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active pt-3" href="/stories/InterviewStoryStarter.cfm">
+            Interview
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pt-3" href="/stories/recipeStoryStarter.cfm">
+            Recipe
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pt-3" href="/stories/TraditionStoryStarter.cfm">
+            Tradition
+          </a>
+        </li>
+      </ul>
+    </div> 
 
-  <div class="HomeOutlineDiv">
-    <ul class="nav nav-pills nav-fill">
-      <li class="nav-item">
-        <a class="nav-link" href="/stories/storystarter.cfm">
-          Story
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/stories/InterviewStoryStarter.cfm">
-          Interview
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/stories/recipeStoryStarter.cfm">
-          Recipe
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/stories/TraditionStoryStarter.cfm">
-          Tradition
-        </a>
-      </li>
-    </ul>
-  </div>
+    <hr>
 
-<!--- Start Gallery --->
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
+    <cfif session.StoryID IS 0>
+      <cfset storyUser=#session.UserID#>
+        <cfelse>
+          <cfset storyUser=#qMyStory.UserID#>
+    </cfif>
 
-  </div>
-</div>
+    <cfif storyUser IS #session.UserID# AND session.storyID IS 0>
+      <!-- Button trigger modal -->
+      <button id="featureBtn" type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
+        data-target="#featureModal" onclick="updateMedia(<cfoutput>#session.UserID#</cfoutput>)">
+        Select Feature Media
+      </button>
 
-<cfif session.StoryID IS 0>
-  <cfset storyUser=#session.UserID#>
-    <cfelse>
-      <cfset storyUser=#qMyStory.UserID#>
-</cfif>
+      <!-- Modal -->
+      <div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Click to Select Featured Media</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
-<cfif storyUser IS #session.UserID# AND session.storyID IS 0>
-  <!-- Button trigger modal -->
-  <BR><BR><BR><button id="featureBtn" type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
-    data-target="#featureModal" onclick="updateMedia(<cfoutput>#session.UserID#</cfoutput>)">
-    Select Feature Media
-  </button>
+            <div class="modal-body" id="modalDiv">
 
-  <!-- Modal -->
-  <div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Click to Select Featured Media</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            </div>
+
+          </div>
+
         </div>
-
-        <div class="modal-body" id="modalDiv">
-
-        </div>
-
       </div>
-
-    </div>
-  </div>
-</cfif>
-
-
-</div>
-
-<!--- End Gallery --->
-
+    </cfif>
 
     <!--- Beginning of media Modal --->
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -150,145 +140,152 @@
       </div>
     </div>
 
+    <!-- Full Height Modal Right -->
+    <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
 
-    <!---     end of media modal --->
+    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-full-height modal-right" role="document">
 
-    <!--- Start interview question modal --->
-    <form action="/stories/StoryStarterAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
-
-      <!-- Full Height Modal Right -->
-      <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-
-        <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-        <div class="modal-dialog modal-full-height modal-right" role="document">
-
-
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title w-100" id="myModalLabel">Interview Suggestions</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="getInterview()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" id="interviewDiv">
-              Interview questions not available
-            </div>
-            <div class="modal-footer justify-content-center">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Interview Modal -->
-
-      <div class="text-center">
-        <a href="" class="btn btn-secondary btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">
-          <i class="fas fa-video"></i> / <i class="fas fa-camera"></i></a>
-      </div>
-
-      <BR>
-      <input class="s4uTextArea form-control" type="text" name="Interviewee" placeholder="Enter Interviewee"><br>
-      <div class="md-form input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-md btn-secondary m-0 px-3" title="Interview suggestions"
-            data-toggle="modal" data-target="#fullHeightModalRight">
-            <i class="far fa-lightbulb"></i>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel">Interview Suggestions</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="getInterview()">
+            <span aria-hidden="true">&times;</span>
           </button>
-
         </div>
-        <input type="text" class="form-control" id="StoryTitle" name="StoryTitle" placeholder="Inteview Question"
-          aria-label="Tradition" aria-describedby="MaterialButton-addon1">
+        <div class="modal-body" id="interviewDiv">
+          Interview questions not available
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Interview Modal -->
+
+
+  <!--- Start interview question modal --->
+  <form action="/stories/StoryStarterAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
+    <div class="row">
+      <div class="col-6">
+        <label>Title</label>
+        <div class="md-form input-group mb-3">
+          <div class="input-group-prepend">
+            <button type="button" class="btn btn-md btn-secondary m-0 px-3" title="Interview suggestions"
+              data-toggle="modal" data-target="#fullHeightModalRight">
+              <i class="far fa-lightbulb"></i>
+            </button>
+          </div>
+          <input type="text" class="form-control" id="StoryTitle" name="StoryTitle"
+            aria-label="Tradition" aria-describedby="MaterialButton-addon1">
+        </div>
+
+        <label>Interviewee</label>
+        <input class="s4uTextArea form-control" type="text" name="Interviewee">
       </div>
 
+      <div class="col-6">
+        <label>Share with: </label>
+        <select class="form-control" name="CircleID" id="CircleID">
+          <cfoutput>
+            <cfloop query="qGetCircles">
+              <option value="#qGetCircles.CircleID#" <cfif qGetCircles.CircleID EQ session.MyCircleID>Selected
+                </cfif>>
+                #qGetCircles.CircleName#
+              </option>
+            </cfloop>
+          </cfoutput>
+        </select>
 
-      <H4>Text:</h4>
-      <textarea id="StoryText" name="StoryText" cols="100" rows="3"></textarea><BR>
-      <script>
-        CKEDITOR.replace('StoryText', {
-          extraPlugins: 'autogrow',
-          autoGrow_minHeight: 100,
-          autoGrow_maxHeight: 100,
-          autoGrow_bottomSpace: 00,
-          removePlugins: 'resize'
-        });
-      </script>
+        <cfinclude template="/circles/CircleExceptions.cfm">
+      </div>
+    </div>
 
-      <input type="hidden" name="StoryTypeID" value="2">
-
-
-        <div>
-            <BR>
-            <h4>Share with: </h4>
-            <select class="mdb-select md-form colorful-select dropdown-secondary" name="CircleID" id="CircleID">
-              <cfoutput>
-                <cfloop query="qGetCircles">
-                  <option value="#qGetCircles.CircleID#" <cfif qGetCircles.CircleID EQ session.MyCircleID>Selected
-                    </cfif>>
-                    #qGetCircles.CircleName#
-                  </option>
-                </cfloop>
-              </cfoutput>
-            </select>
-
-            <cfinclude template="/circles/CircleExceptions.cfm">
-
-          </div>
+    <label class="mt-3">Interview</label>
+    <textarea id="StoryText" name="StoryText" cols="100" rows="3"></textarea>
+    <script>
+      CKEDITOR.replace('StoryText', {
+        extraPlugins: 'autogrow',
+        autoGrow_minHeight: 100,
+        autoGrow_maxHeight: 100,
+        autoGrow_bottomSpace: 00,
+        removePlugins: 'resize'
+      });
+    </script>
 
 
-      <div class="text-center">
-
-        <button class="btn btn-secondary btn-floating" type="submit">
-          <i class="fas fa-check"></i>
+    <div class="row mt-2">
+      <div class="col-12">
+        <buton class="btn btn-secondary font-weight-bold" data-toggle="modal" data-target="#modalLoginForm" id="mediaBtn">
+          ADD PICTURE / VIDEO
         </button>
       </div>
-    </form>
-    <BR><BR><BR><BR><BR><BR><BR>
-    <cfinclude template="/FooterMobile.cfm">
-
-      <!-- JQuery -->
-      <script type="text/javascript" src="/js/jquery.min.js"></script>
-      <!-- Bootstrap tooltips -->
-      <script type="text/javascript" src="/js/popper.min.js"></script>
-      <!-- Bootstrap core JavaScript -->
-      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-      <!-- MDB core JavaScript -->
-      <script type="text/javascript" src="/js/mdb.min.js"></script>
-
-          <!-- Optional JavaScript -->
-          <script type="text/javascript" src="/js/s4u.js"></script>
-          <script type="text/javascript" src="/js/badgeUpdates.js"></script>
-          <script type="text/javascript" src="/js/newFeatureImg.js"></script>
-          <script type="text/javascript" src="/js/interviewList.js"></script>
-          <script type="text/javascript">
-            $(document).ready(function () {
-
-                  $(function () {
-                    $(".sticky").sticky({
-                      topSpacing: 90,
-                      zIndex: 2,
-                      stopper: "#YourStopperId"
-                    });
-                  });
-
-                  // MDB Lightbox Init
-                  $(function () {
-                    $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-                  });
-
-                  // Check Notifications
-                  newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
-                    '#session.LastTCView#' < /cfoutput>);
-                  getInterview();
-                  updateMedia( <cfoutput>#session.UserID#</cfoutput>);
+    </div>
 
 
-                      $('.mdb-select').materialSelect();
+    <hr>
 
-                      });
-                      // End of document ready
-          </script>
+    <div class="row mt-2">
+      <div class="col-12 text-right">               
+        <button class="btn btn-primary font-weight-bold" type="submit">
+          Create
+        </button>
+        <button class="btn btn-alert">
+          Cancel
+        </button>
+      </div>
+    </div>
 
-      </body>
+    <input type="hidden" name="StoryTypeID" value="2">
 
+  </form>
+    
+  </div>
+
+  <cfinclude template="/FooterMobile.cfm">
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="/js/mdb.min.js"></script>
+
+  <!-- Optional JavaScript -->
+  <script type="text/javascript" src="/js/s4u.js"></script>
+  <script type="text/javascript" src="/js/badgeUpdates.js"></script>
+  <script type="text/javascript" src="/js/newFeatureImg.js"></script>
+  <script type="text/javascript" src="/js/interviewList.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(function () {
+        $(".sticky").sticky({
+          topSpacing: 90,
+          zIndex: 2,
+          stopper: "#YourStopperId"
+        });
+      });
+
+      // MDB Lightbox Init
+      $(function () {
+        $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+      });
+
+      // Check Notifications
+      newPages( < cfoutput > #session.userid#, '#session.LastPageView#', '#session.LastBookView#',
+        '#session.LastTCView#' < /cfoutput>);
+      getInterview();
+      updateMedia( <cfoutput>#session.UserID#</cfoutput>);
+
+
+          $('.mdb-select').materialSelect();
+
+          });
+          // End of document ready
+  </script>
+</body>
 </html>

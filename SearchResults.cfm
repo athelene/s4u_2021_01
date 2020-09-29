@@ -9,10 +9,10 @@
 
   <link rel="icon" href="/favicon-16x16.png" type="image/png" size="16x16">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" size="32x32">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <link href="/s4u.css" rel="stylesheet">
-    <link href="/main.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/index.css">  
 </head>
 
 <cfajaxproxy cfc="cfc.Notify" jsclassname="Notify" />

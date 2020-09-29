@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <>
+  <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,9 +8,8 @@
 
   <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <link href="/s4u.css" rel="stylesheet">
-  <link href="/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/index.css">  
 
   <title>Stories For Us</title>
   </head>
@@ -28,8 +27,8 @@
 </cfif>
 
 
-    <cfset session.logintype = "newuser">
-    <cfset session.userEmail = #trim(form.userEmail)#>
+<cfset session.logintype = "newuser">
+<cfset session.userEmail = #trim(form.userEmail)#>
 
 
 <cfset authurl = application.google.generateAuthUrl(application.callback, session.urltoken)>

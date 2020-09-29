@@ -250,7 +250,7 @@ var populateHomeFeed = function (rawData) {
       '<img src="' +
       rawData.DATA[k][10] +
       '" class="rounded-circle z-depth-0 btn-circle-sm"' +
-      'alt="avatar image" Title="Created by">' +
+      'alt="avatar image" style="max-width: 5rem;" Title="Created by">' +
       'by ' +
       rawData.DATA[k][8] + ', ' +
       rawData.DATA[k][5] +

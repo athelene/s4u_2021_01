@@ -1,0 +1,216 @@
+/* Import Dependencies */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap");
+/* Fonts */
+/* Colors */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Quicksand:wght@500&display=swap");
+html {
+  min-height: 100%;
+}
+
+body {
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Baloo Tammudu 2", cursive !important;
+  height: 100%;
+}
+
+a {
+  color: #ff9A47;
+}
+
+h1, h4, h5, h6, .copyright {
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+}
+
+.btn {
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+label {
+  margin-bottom: 0;
+  color: #272727;
+  font-weight: bold;
+}
+
+.shade {
+  background: rgba(255, 255, 255, 0.35);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.logo {
+  margin-left: 15.666667%;
+  max-width: 15rem;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+}
+
+.logo-short {
+  max-height: 5rem;
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.card {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 250, 0.85)), to(#fffffa));
+  background: linear-gradient(0deg, rgba(255, 255, 250, 0.85), #fffffa);
+  border: solid 2.5px #ddd;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+}
+
+input.form-control {
+  padding-top: .45rem;
+  padding-bottom: 0rem;
+}
+
+select.form-control {
+  padding-top: .2rem;
+}
+
+.headline-text {
+  font-size: 3.5rem;
+  margin-top: 5.5rem;
+  color: white;
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.subheadline-text {
+  color: white;
+  text-shadow: 0 0 0.35rem rgba(0, 0, 0, 0.74);
+  width: 80%;
+}
+
+.menu {
+  padding-top: 2rem;
+}
+
+.menu ul {
+  width: 100%;
+  text-align: right;
+}
+
+.menu li {
+  display: inline-block;
+  list-style-type: none;
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+}
+
+.menu li a {
+  color: #ffcB47;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .9rem;
+  text-shadow: 0 0 0.35rem rgba(0, 0, 0, 0.35);
+}
+
+.menu li a:hover {
+  color: #272727;
+  text-shadow: none;
+}
+
+.call-out-section {
+  background-image: url("../images/dark_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-box-shadow: inset 0 0 15rem rgba(0, 0, 0, 0.35);
+          box-shadow: inset 0 0 15rem rgba(0, 0, 0, 0.35);
+  height: 20rem;
+  z-index: 1;
+  position: relative;
+  margin-top: 6rem;
+}
+
+.copyright {
+  background: #ffcB47;
+  height: 3rem;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+nav {
+  background-color: transparent;
+}
+
+.card-body {
+  color: #272727;
+}
+
+.footer {
+  background: #ffcB47;
+  text-align: center;
+}
+
+.footer .btn {
+  width: 15rem;
+  height: 3rem;
+  color: #272727;
+}
+
+.footer .btn:hover {
+  color: #fff;
+}
+
+.footer .btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.footer .btn.home-button {
+  width: 5rem;
+}
+
+.footer .btn .badge {
+  vertical-align: text-bottom;
+}
+
+.dropup .dropdown-menu {
+  background-color: #ffcB47;
+  margin-bottom: 0.45rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 15rem;
+  border-bottom: none;
+}
+
+.dropup .dropdown-menu .dropdown-item:hover, .dropup .dropdown-menu .dropdown-item:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+/* NAV PILLS */
+.nav-pills .nav-item .nav-link.active {
+  background-color: #ffcB47;
+  color: #272727;
+  font-weight: bold;
+}
+
+.nav-pills .nav-item .nav-link:not(.active) {
+  background-color: #e7e7e7;
+  color: #272727;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.nav-pills .nav-item:first-of-type .nav-link {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.nav-pills .nav-item:last-of-type .nav-link {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+/*# sourceMappingURL=index.css.map */

@@ -8,10 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=7">
 
   <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <link href="/s4u.css" rel="stylesheet">
-  <link href="/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/css/index.css">  
 
 <body>
   <cfquery name="insertQCQuestion">
