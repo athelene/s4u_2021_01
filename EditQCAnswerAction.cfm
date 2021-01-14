@@ -29,9 +29,8 @@
     </cfquery>
     </cfif>
 
+      <cflocation url="/HomePage.cfm">
 
-
-  <cflocation url="/Library_qc.cfm">
     <!-- JQuery -->
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->

@@ -48,7 +48,7 @@
 
                Select StoryTbl.StoryID, trim(StoryTbl.StoryTitle) as StoryTitle,
                trim(Storytbl.StoryText) as StoryText, StoryTbl.Userid,
-               StoryTbl.StoryTypeID, Storytbl.StoryDate,
+               StoryTbl.StoryTypeID, FORMAT (Storytbl.StoryDate, 'MMM dd, yyyy') as date,
                trim(StoryTbl.Interviewee) as Interviewee, StoryTbl.CircleID,
                trim(UserTbl.UserDisplayName) as UserDisplayName,
                StoryTbl.StoryIngredients, UserTbl.UserMediaLoc,
@@ -119,7 +119,7 @@
           <cfquery name="qOtherStories">
                Select StoryTbl.StoryID, trim(StoryTbl.StoryTitle) as StoryTitle,
                trim(Storytbl.StoryText) as StoryText, StoryTbl.Userid,
-               StoryTbl.StoryTypeID, Storytbl.StoryDate,
+               StoryTbl.StoryTypeID, FORMAT (Storytbl.StoryDate, 'MMM dd, yyyy') as date,
                trim(StoryTbl.Interviewee) as Interviewee, StoryTbl.CircleID,
                trim(UserTbl.UserDisplayName) as UserDisplayName,
                StoryTbl.StoryIngredients, UserTbl.UserMediaLoc,
@@ -151,7 +151,9 @@
                     (Select StoryID from ExcludeTbl
                     where ExcludeUser = #session.UserID#)
                     )
-                    ) )
+                    ) 
+                    
+                    )
 
                     order by StoryDate Desc, StoryTitle
           </cfquery>
@@ -204,10 +206,10 @@
                <cfset wClause=wClause & ')'>
           </cfif>
 
-          <cfquery name="qOtherStories">
+          <cfquery name="qAllStories">
                Select StoryTbl.StoryID, trim(StoryTbl.StoryTitle) as StoryTitle,
                trim(Storytbl.StoryText) as StoryText, StoryTbl.Userid,
-               StoryTbl.StoryTypeID, Storytbl.StoryDate,
+               StoryTbl.StoryTypeID, FORMAT (Storytbl.StoryDate, 'MMM dd, yyyy') as date,
                trim(StoryTbl.Interviewee) as Interviewee, StoryTbl.CircleID,
                trim(UserTbl.UserDisplayName) as UserDisplayName,
                StoryTbl.StoryIngredients, UserTbl.UserMediaLoc,
@@ -238,14 +240,16 @@
                     (Select StoryID from ExcludeTbl
                     where ExcludeUser = #session.UserID#)
                     )
-                    ) )
+                    )
+                    
+                    OR storyTbl.UserID = #session.UserID# AND #wClause#)
 
                     order by StoryDate Desc, StoryTitle
           </cfquery>
-          <cfif qOtherStories.RecordCount IS 0>
+          <cfif qAllStories.RecordCount IS 0>
                <cfreturn "No pages fit your selection." />
                <cfelse>
-                    <cfreturn qOtherStories />
+                    <cfreturn qAllStories />
           </cfif>
      </cffunction>
 </cfcomponent>

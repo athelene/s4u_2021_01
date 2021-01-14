@@ -20,7 +20,7 @@
     and StoryID = #url.storyID#
   </cfquery>
 
-  <cflocation url="/Redirect.cfm?goToPage=BookReader&BookID=#session.bookid#">
+  <cflocation url="/Books/BookReader.cfm?BookID=#session.bookid#">
 </body>
 
 </html>

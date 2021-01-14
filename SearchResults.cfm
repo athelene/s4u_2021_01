@@ -21,6 +21,7 @@
 <!--HTML-->
 
 <cfinclude template="/TopNavSmall.cfm">
+<div class="col-md-10 offset-md-1">
     <h2 class="h2-responsive">Search results for:
         <strong>
             <cfoutput>#form.searchTerm#</cfoutput><BR>
@@ -38,6 +39,8 @@
 
 
     <BR><BR><BR><BR><BR>
+
+</div>
     <cfinclude template="/FooterMobile.cfm">
         <!-- JQuery -->
         <script type="text/javascript" src="/js/jquery.min.js"></script>

@@ -45,6 +45,7 @@
       from StoryTbl
       where StoryID = #session.StoryID#
     </cfquery>
+      <div class="col-md-10 offset-md-1">
     <cfoutput>
 
       <h5>Select the books and time capsules where you want
@@ -65,9 +66,7 @@
           </cfloop>
 
         </select>
-        <button class="btn-save btn btn-primary btn-sm" type="submit">
-          <i class="fas fa-check"></i>
-        </button>
+
 
 
         <input id="data" type="hidden" name="data" value="" />
@@ -80,6 +79,7 @@
       </form>
 
     </cfoutput>
+  </div>
 
     <cfinclude template="/FooterMobile.cfm">
 

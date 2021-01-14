@@ -34,6 +34,8 @@
             where CircleOwner = #session.Userid#
             Order By CircleSort
         </cfquery>
+
+            <div class="col-md-10 offset-md-1">
         <!--- div1 --->
         <div>
             <H2>
@@ -129,6 +131,8 @@
             </div>
         </form>
         <BR><BR><BR><BR><BR><BR><BR>
+
+    </div>
         <cfinclude template="/FooterMobile.cfm">
             <!-- JQuery -->
             <script type="text/javascript" src="/js/jquery.min.js"></script>

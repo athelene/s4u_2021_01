@@ -27,7 +27,7 @@
 <body>
   <!--- Start Nav --->
   <cfinclude template="/topNavSmall.cfm">
-
+  <div class="col-md-10 offset-md-1">
     <h1>Add Interview Questions</h1>
 
     <cfquery name="qGetCategories">
@@ -55,13 +55,16 @@
       <button type="submit" class="btn-save btn btn-secondary btn-sm">Save Question</button>
     </form>
     <HR>
-    Interview Questions:<BR>
+   <h3>Current Interview Questions:</h3> 
     <cfloop query = "qGetInterviewQs">
   <cfoutput>
-  #qGetInterviewQs.IntCategory# - #qGetInterviewQs.IntQuestion#<BR>
+    <p class="card">
+  #qGetInterviewQs.IntCategory# - #qGetInterviewQs.IntQuestion#</p>
   </cfoutput>
     </cfloop>
 <BR><BR><BR>
+
+  </div>
     <cfinclude template="/FooterMobile.cfm">
       <!-- jQuery -->
       <script type="text/javascript" src="../js/jquery.min.js"></script>

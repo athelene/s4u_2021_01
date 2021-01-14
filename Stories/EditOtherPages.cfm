@@ -45,7 +45,7 @@
 
 </div>
 <!--- end gallery  --->
-
+<div class="col-md-10 offset-md-1">
     <div>
         <form action="/stories/EditMediaAction.cfm" enctype="multipart/form-data" method="post">
             <div>
@@ -137,6 +137,7 @@
     </div>
     </form>
     <BR><BR><BR><BR><BR><BR><BR>
+</div>
     <cfinclude template="/FooterMobile.cfm">
 
         </nav>

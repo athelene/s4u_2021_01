@@ -33,11 +33,11 @@
       where CircleID = #url.CircleID#
     </cfquery>
 
-
+<div class="col-md-10 offset-md-1">
 
     <cfoutput>
           <cfif qGetCircle.CircleID IS #session.MyCircleID#>
-          <p class="circleListText">#qGetCircle.CircleName#</p>
+            <h2>#qGetCircle.CircleName#</h2>
           <cfelse>
       <h2>#qGetCircle.CircleName#</h2>
       <form action="/circles/EditCircleAction.cfm" enctype="multipart/form-data" method="post">
@@ -70,12 +70,12 @@
         </cfif>
       </h2>
 
-      <div id="CircleDiv">
+      <div id="CircleDiv" class="card">
       </div>
 
 
     </cfoutput>
-
+  </div>
     <!---         Start Footer --->
     <cfinclude template="/FooterMobile.cfm">
       <!-- JQuery -->

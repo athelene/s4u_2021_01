@@ -180,7 +180,7 @@ var populateHomeFeed = function (rawData) {
     data = data +
 
       // Main Story Wrapper
-      '<div class="story col-12 col-md-6 col-lg-4 col-xl-3">' +
+      '<div class="story col-12 col-md-6 col-lg-4 col-xl-3 card-group">' +
 
       // Card
       '<div class="card">' +
@@ -220,13 +220,16 @@ var populateHomeFeed = function (rawData) {
     //  if (rawData.DATA[k][4] === 1) {
 
     data = data +
+    '<a href="/Stories/Story.cfm?StoryID=' + rawData.DATA[k][0] + '" ' +
     '<div id="mediaDiv" class="HomeMediaDiv">';
 
     if (rawData.DATA[k][11] !== null && rawData.DATA[k][14] === 2) {
-      data = data + '<img src="' +
+      data = data + 
+
+      '<img src="' +
         rawData.DATA[k][11] +
         '" class="img-responsive w-100 img-fluid" style="max-height: 15rem;" alt="...">' +
-        '</img>' +
+        '</img>' + 
         '</div>' 
     };
 
@@ -237,13 +240,13 @@ var populateHomeFeed = function (rawData) {
         rawData.DATA[k][11] +
         '" preload />' +
         'Your browser does not support the video tag.' +
-        '</video>' +
-        '</div>'
+        '</video>' + 
+        '</div>' + '</a>' 
     };
 
     //   Create the beginning of the post with data
     data = data +
-      '<div id="postTextDiv" class="card-body pb-0">' +
+      '<div id="postTextDiv" class="card-body pb-0 postText">' +
       '<p class="HomePagePara">'
 
     //   Include ingredients if a recipe
@@ -273,7 +276,7 @@ var populateHomeFeed = function (rawData) {
       '" class="rounded-circle z-depth-0 btn-circle-sm mr-2"' +
       'alt="avatar image" style="max-width: 2.5rem; max-height: 2.5rem"  Title="Created by">' +
       'by ' +
-      rawData.DATA[k][8] + ', ' +
+      rawData.DATA[k][8] + '<br> ' +
       rawData.DATA[k][5] +
       '</div>' +
       '</div>' +

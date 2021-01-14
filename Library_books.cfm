@@ -34,39 +34,32 @@
         <div class="row">
           <div class="col-12">               
             <div class="btn-group bg-light" data-toggle="buttons">
-              <label class="btn btn-secondary btn-rounded form-check-label active">
+              <label class="btn btn-outline-text-primary btn-rounded form-check-label active">
                 <input class="form-check-input" type="radio" name="options" id="option1" autocomplete="off" checked
-                  onClick="getAllBooks(<cfoutput>#session.userid#</cfoutput>)">
-                All </label>
-              <label class="btn btn-secondary btn-rounded form-check-label">
-                <input class="form-check-input" type="radio" name="options" id="option2" autocomplete="off"
-                  onClick="getMyBooks(<cfoutput>#session.userid#</cfoutput>)"> Only Mine
+                  onClick="getAllBooks(<cfoutput>#session.userid#</cfoutput>)">All Books
               </label>
-              <label class="btn btn-secondary btn-rounded form-check-label">
+              <label class="btn btn-outline-text-primary btn-rounded form-check-label">
+                <input class="form-check-input" type="radio" name="options" id="option2" autocomplete="off"
+                  onClick="getMyBooks(<cfoutput>#session.userid#</cfoutput>)">Mine
+              </label>
+              <label class="btn btn-outline-text-primary btn-rounded form-check-label">
                 <input class="form-check-input" type="radio" name="options" id="option3" autocomplete="off"
-                  onClick="getOtherBooks(<cfoutput>#session.userid#</cfoutput>)"> Other People's
+                  onClick="getOtherBooks(<cfoutput>#session.userid#</cfoutput>)">Others
               </label>
             </div>
           </div>
         </div>
+        
+        <!-- Checkboxes -->
+        <div class="form-check form-check-inline mt-2">
+          <input class="form-check-input" type="checkbox" id="showBooks" value="on" checked>
+          <label class="form-check-label" for="showBooks">Stories</label>
+        </div>
 
-
-    
-        <!-- Material checked -->
-        <div class="switch sortContainer">
-          <span class="sortContainer">
-            Stories <label>
-              <input type="checkbox" checked id="showBooks" value="on">
-              <span class="lever"></span>
-            </label>
-          </span>
-          <span class="sortContainer">
-            <label>
-              Time Capsules
-              <input type="checkbox" checked id="showTCs" value="on">
-              <span class="lever"></span>
-            </label>
-          </span>
+        <!-- Checkboxes -->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="showTCs" value="on" checked>
+          <label class="form-check-label" for="showTCs">Time Capsules</label>
         </div>
 
         <hr>

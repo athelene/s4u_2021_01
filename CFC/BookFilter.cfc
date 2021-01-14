@@ -14,8 +14,9 @@
 
                     <cfquery name="qMyBooks">
                         Select BookTbl.BookID, trim(BookTbl.BookTitle) AS BookTitle, BookTbl.BookOwner,
-                        BookTbl.TimeCapsuleDate,
-                        BookTbl.BookCreateDate, BookTbl.ContentType, BookTbl.CircleID,
+                        BookTbl.TimeCapsuleDate, 
+                        FORMAT (BookTbl.BookCreateDate, 'MMM dd, yyyy') as date,
+                        BookTbl.ContentType, BookTbl.CircleID,
                         '#trim(qGetUserName.UserDisplayName)#' as UserDisplayName
                         from BookTbl
                         where BookOwner = #session.UserID#
@@ -50,7 +51,7 @@
                     <cfquery name="qOtherBooks">
                         Select BookTbl.BookID, trim(BookTbl.BookTitle) AS BookTitle, BookTbl.BookOwner,
                         BookTbl.TimeCapsuleDate,
-                        BookTbl.BookCreateDate, BookTbl.ContentType, BookTbl.CircleID, UserTbl.UserDisplayName
+                        FORMAT (BookTbl.BookCreateDate, 'MMM dd, yyyy') as date, BookTbl.ContentType, BookTbl.CircleID, UserTbl.UserDisplayName
                         from BookTbl
                         left join UserTbl
                         on BookTbl.BookOwner = usertbl.Userid
@@ -87,7 +88,7 @@
                     <cfquery name="qAllBooks">
                         Select BookTbl.BookID, trim(BookTbl.BookTitle) AS BookTitle, BookTbl.BookOwner,
                         BookTbl.TimeCapsuleDate,
-                        BookTbl.BookCreateDate, BookTbl.ContentType, BookTbl.CircleID, UserTbl.UserDisplayName
+                        FORMAT (BookTbl.BookCreateDate, 'MMM dd, yyyy') as date, BookTbl.ContentType, BookTbl.CircleID, UserTbl.UserDisplayName
                         from BookTbl
                         left join UserTbl
                         on BookTbl.BookOwner = usertbl.Userid

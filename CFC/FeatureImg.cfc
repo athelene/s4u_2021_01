@@ -43,6 +43,7 @@
         </cfquery>
         <cfreturn qNewMedia>
     </cffunction>
+    
     <cffunction name="deleteMedia" access="remote" returnFormat="json" output="false">
         <cfargument name="mediaID" required="yes" type="numeric" default="0" />
         <cfquery name="qDeleteMedia">

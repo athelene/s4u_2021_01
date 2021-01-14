@@ -1,15 +1,18 @@
 // Use an asynchronous call to bring back all story media from the ColdFusion server.
 var newMedia = function () {
   console.log('starting newMedia')
+  let userID = localStorage.getItem('userID')
   // create an instance of the proxy. 
   var ab = new FeatureImg();
   ab.setCallbackHandler(populatePageDiv);
   ab.setErrorHandler(myErrorHandler);
-  ab.newMedia(window.userID);
+  ab.newMedia(userID);
+
 }
 
 // CALLBACK FUNTION TO FILL IN THE pageDiV
 var populatePageDiv = function (mediaList) {
+
   console.log('starting populatePageDiv');
   var pageDiv = document.getElementById("pageDiv");
   var itemCode = '';
@@ -53,8 +56,8 @@ var populatePageDiv = function (mediaList) {
         mediaID + ', ' + storyID + ', ' + window.UserID + ')">' +
         '<img src=' +
         mediaLoc +
-        ' class="img-fluid z-depth-1" height="150em" width="150em"><BR>'
-
+//        ' class="img-fluid z-depth-1" height="240" width="240" ><BR>'
+      'class="s4uGallery" onclick="window.open(this.src)"><BR>'
       if (featureMedia === 1) {
         itemCode = itemCode +
           '><p>Featured</p>'
@@ -92,9 +95,9 @@ var setMediaHandler = function (setMediaResult) {
 }
 
 // Use an asynchronous call to bring back all story media from the ColdFusion server.
-var updateMedia = function (userID) {
+var updateMedia = function () {
   console.log('starting updateMedia');
-
+  var userID = localStorage.getItem("userID")
   // create an instance of the proxy. 
   var ab = new FeatureImg();
   ab.setCallbackHandler(updateMediaList);
@@ -238,10 +241,11 @@ var updateMediaList = function (mediaList) {
       }
 
       itemCode2 = itemCode2 +
-        '<a href="/stories/deleteMedia.cfm?deleteMediaRec=' +
-        mediaID +
-        '" class="btn">' +
-        '<i class="fas fa-trash fa-lg"></i></a>'
+      '<button onclick="deleteMedia(' +
+      mediaID +
+      ')" class="btn">' +
+      '<i class="fas fa-trash fa-lg"></i></button>'
+
 
       itemCode2 = itemCode2 +
         '</div>'
@@ -265,19 +269,17 @@ var deleteMedia = function (mediaID) {
 
   // create an instance of the proxy. 
   var ab = new FeatureImg();
-  ab.setCallbackHandler(postDeleteMediaList);
+  ab.setCallbackHandler(newMedia);
   ab.setErrorHandler(myErrorHandler);
   ab.deleteMedia(mediaID);
+
 }
 
 var postDeleteMediaList = function () {
   console.log('starting postDeleteMediaList');
+  newMedia();
 
-  // create an instance of the proxy. 
-  var ab = new FeatureImg();
-  ab.setCallbackHandler(updateMediaList);
-  ab.setErrorHandler(myErrorHandler);
-  ab.newMedia(window.UserID);
+
 }
 
 // ____________________________________________________________

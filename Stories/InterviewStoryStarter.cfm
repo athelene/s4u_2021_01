@@ -67,6 +67,7 @@
 
     <hr>
 
+
     <cfif session.StoryID IS 0>
       <cfset storyUser=#session.UserID#>
         <cfelse>
@@ -91,13 +92,8 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-
-            <div class="modal-body" id="modalDiv">
-
-            </div>
-
+            <div class="modal-body" id="modalDiv"></div>
           </div>
-
         </div>
       </div>
     </cfif>
@@ -113,7 +109,6 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
 
           <form action="/stories/saveMedia.cfm" name="saveMedia" enctype="multipart/form-data" method="post">
             <div class="modal-footer d-flex justify-content-center">
@@ -133,7 +128,6 @@
               <button type="Submit" Name="SaveFile" value="Save Changes" class="btn btn-sm btn-secondary">
                 <i class="fas fa-check"></i>
               </button>
-
             </div>
           </form>
         </div>
@@ -164,7 +158,20 @@
     </div>
   </div>
   <!-- End Interview Modal -->
-
+                <!--- Start Gallery --->
+                <div class="container">
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
+                
+                  </div>
+                </div>
+              
+          <div class="row mt-2">
+            <div class="col-12">
+              <buton class="btn btn-secondary font-weight-bold" data-toggle="modal" data-target="#modalLoginForm" id="mediaBtn">
+                ADD PICTURE / VIDEO
+              </button>
+            </div>
+          </div>
 
   <!--- Start interview question modal --->
   <form action="/stories/StoryStarterAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
@@ -243,6 +250,8 @@
   </form>
     
   </div>
+
+  <BR><BR><BR><BR><BR><BR>
 
   <cfinclude template="/FooterMobile.cfm">
 

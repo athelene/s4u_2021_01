@@ -4,11 +4,12 @@
 
 <!--- Start Gallery  --->
 <!--- Start media list --->
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
 
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
+  
+    </div>
   </div>
-</div>
 
       <cfset storyUser=#qMyStory.UserID#>
 
@@ -46,7 +47,7 @@
 
 </div>
 <!--- end gallery  --->
-
+<div class="col-md-10 offset-md-1">
     <div>
         <form action="/stories/EditMediaAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
             <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -151,7 +152,10 @@
 
     </div>
     </form>
+
+    
     <BR><BR><BR><BR><BR><BR><BR>
+</div>
     <cfinclude template="/FooterMobile.cfm">
 
         </nav>

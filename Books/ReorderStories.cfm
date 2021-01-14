@@ -33,6 +33,7 @@
 
 
 <body>
+  <div class="col-md-10 offset-md-1">
   <h3>Drag the story titles to the order they will appear in your book: </h3>
   <form name="StoryOrder" method="post" action="/Books/SetStoryOrder.cfm" onsubmit="return getNewOrder()">
 
@@ -56,6 +57,7 @@
 
 
   <BR><BR><BR><BR><BR><BR><BR>
+</div>
   <cfinclude template="/FooterMobile.cfm">
 
     <!-- JQuery -->

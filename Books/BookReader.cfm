@@ -16,7 +16,7 @@
 
   <cfajaxproxy cfc="cfc.Notify" jsclassname="Notify" />
 
-
+<body>
   <!--- Start Nav --->
   <cfinclude template="/TopNavSmall.cfm">
     <cfset session.BookID=url.BookID>
@@ -57,7 +57,7 @@
         )
         order by BookContentTbl.SortOrder
       </cfquery>
-
+    <div class="col-md-10 offset-md-1">
       <cfif qBookBasics.RecordCount IS 0>
         <div>
 
@@ -112,6 +112,7 @@
               <h3 class="mb-0">
                 #qBookBasics.BookTitle#, created by #qBookBasics.UserDisplayName#
               </h3>
+              <h4>Table of Contents</h4>
             </cfoutput>
 
             <cfset i=1 />
@@ -231,7 +232,7 @@
       </div>
 
       </cfif>
-
+    </div>
 
       <cfinclude template="/FooterMobile.cfm">
         <!-- Accordion wrapper -->

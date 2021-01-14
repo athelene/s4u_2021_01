@@ -19,7 +19,7 @@
 
   <!--- Start Nav --->
   <cfinclude template="/topNavSmall.cfm">
-
+  <div class="col-md-10 offset-md-1">
     <form action="/admin/SubmitQuickConnectAction.cfm" enctype="multipart/form-data" method="post">
       <BR>
       <div>
@@ -42,7 +42,7 @@
     </form>
 
 
-
+    <div class="col-md-10 offset-md-1">
 
 
     <!---         Start Footer --->

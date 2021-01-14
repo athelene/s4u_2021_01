@@ -33,7 +33,9 @@
                 where StoryTbl.StoryID = #session.Storyid#
 </cfquery>
 <body>
+
 <cfoutput>
+  <div class="col-md-10 offset-md-1">
 <cfif len(qMyStory.Interviewee)>
   <h2>Interview of #qMystory.Interviewee#: <BR>
   #qMyStory.StoryTitle# </h2> 
@@ -45,8 +47,7 @@
   </cfif>
 </cfif>
 <h3 class="h3-responsive">
-  <img src="#qMyStory.UserMediaLoc#" class="rounded-circle z-depth-0 btn-circle-sm"
-      alt="avatar image" Title="Created by">
+  <img src="#qMyStory.UserMediaLoc#" class="rounded-circle z-depth-0" alt="avatar image" height="40">
       By #qMyStory.UserDisplayName#
 </h3>
 
@@ -68,8 +69,9 @@
 </div>
 <cfset setFeatureBtn = 'OFF'>
 <BR><BR>
+</div>
 <cfinclude template="StoryGallery.cfm">
-
+<div class="col-md-10 offset-md-1">
 <div class="s4u-StoryText">
 
     <cfif qMyStory.StoryTypeID is 3>
@@ -95,6 +97,7 @@
 </cfoutput>
 
 <br /><br /><br /><br /><br /><br />
+</div>
 <!---         Start Footer --->
       <cfinclude template="/FooterMobile.cfm">
 

@@ -70,8 +70,8 @@ var saveMyAnswerCheck = function (data) {
 var getMyAnswer = function (qcID, userID) {
   console.log('starting getMyAnswer');
   if (qcID === 1) {
-     document.getElementById('QCAnswer').style.display='none';
-     document.getElementById('saveQCBtn').style.display='none';
+  //   document.getElementById('QCAnswer').style.display='none';
+  //   document.getElementById('saveQCBtn').style.display='none';
     //  document.getElementById('editQCBtn').style.display='none'; 
     //  document.getElementById('saveEditQCBtn').style.display='none';  
     return;

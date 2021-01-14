@@ -25,7 +25,7 @@
   <body>
 <!--- Start Nav --->
 <cfinclude template="/TopNavSmall.cfm">
-
+<div class="col-md-10 offset-md-1">
 <cfoutput>
 
 <cfset next_date = DateAdd('d',1,qGetNextDate.next_date)>
@@ -48,14 +48,16 @@
 
 
 </form>
-
+<br>
+<h3>Current Quick Connect Questions:</h3>
 <cfloop query="qGetQCQuestions">
-  #dateformat(qGetQCQuestions.ViewPointDate, 'YYYY - MM - DD')#, #qGetQCQuestions.ViewPointQ# <BR>
+  <p class="card">
+  #dateformat(qGetQCQuestions.ViewPointDate, 'YYYY - MM - DD')#, #qGetQCQuestions.ViewPointQ# </p>
 </cfloop>
 </cfoutput>
 <!-- Default form subscription -->
 <BR><BR><BR>
-
+</div>
         <cfinclude template="/FooterMobile.cfm">
 
           <!-- JQuery -->

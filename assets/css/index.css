@@ -37,6 +37,10 @@ label {
   font-weight: bold;
 }
 
+label.btn-text-primary input, label.btn-outline-text-primary input {
+  display: none;
+}
+
 .shade {
   background: rgba(255, 255, 255, 0.35);
   width: 100%;
@@ -221,7 +225,7 @@ nav {
   width: 10rem;
   background: #fff;
   border-radius: 50%;
-  border: solid 2px #ffcB47;
+  border: solid 10px #ffcB47;
 }
 
 .circle a, .story-page-story a {
@@ -242,10 +246,20 @@ nav {
 
 .story-page-story {
   border-radius: 0.25rem;
-  height: auto;
+  height: 10rem;
 }
 
 .story-page-story a {
   margin-top: 0.75rem;
+}
+
+.story {
+  margin-bottom: 1rem;
+}
+
+.postText {
+  max-height: 8rem;
+  margin-bottom: 3px;
+  overflow: hidden;
 }
 /*# sourceMappingURL=index.css.map */

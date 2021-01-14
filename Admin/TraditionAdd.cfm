@@ -21,7 +21,7 @@
   <body>
 <!--- Start Nav --->
 <cfinclude template="/TopNavSmall.cfm">
-
+<div class="col-md-10 offset-md-1">
 <cfoutput>
 
 
@@ -39,14 +39,16 @@
 
 
 </form>
-
+<BR>
+<h3>Current Traditions:</h3>
 <cfloop query="qGetTraditions">
-  #qGetTraditions.TraditionName# <BR>
+  <p class="card">
+  #qGetTraditions.TraditionName# </p>
 </cfloop>
 </cfoutput>
 <!-- Default form subscription -->
 <BR><BR><BR>
-
+</div>
         <cfinclude template="/FooterMobile.cfm">
 
           <!-- JQuery -->

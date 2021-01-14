@@ -45,17 +45,14 @@
     Order By CircleSort
   </cfquery>
 
+      <div class="col-md-10 offset-md-1">
     <form action="/books/NewBookAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
 
-      <div class="col-md-10 offset-md-1">
+
         <div class="card card-body">
           
           <h4 class="modal-title w-100 font-weight-bold">New Story</h4>
           
-          <!--- CLOSE MODAL FORM BUTTON --->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
           
           <!--- BOOK TITLE FIELD --->
           <div class="md-form mb-5">
@@ -129,9 +126,9 @@
             </button>
           </div>
         </div>
-      </div>
-    </form>
 
+    </form>
+  </div>
     <cfinclude template="/FooterMobile.cfm">
 
     <!-- JQuery -->

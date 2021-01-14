@@ -57,7 +57,7 @@
 
 
   <body>
-
+    <div class="col-md-10 offset-md-1">
     <cfoutput>
       <h1>Add Pages To " #qGetBookTitle.BookTitle#"</h1>
 
@@ -84,7 +84,7 @@
       <BR><BR><BR><BR><BR><BR><BR>
       <cfinclude template="/FooterMobile.cfm">
     </cfoutput>
-
+  </div>
     <!-- JQuery -->
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->

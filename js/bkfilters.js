@@ -130,7 +130,7 @@ var populateBookList = function (bkList) {
             itemCode = itemCode + '<i class="fa fa-hourglass-start fa-lg" aria-hidden="true"></i> ';
           }
           itemCode = itemCode +
-          bkTitle + ', ' + bkCreateDate +
+          bkTitle + '<BR> ' + bkCreateDate +
           '</a>' +
         '</div>'
       console.log(itemCode);

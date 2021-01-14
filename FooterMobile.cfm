@@ -6,11 +6,11 @@
 
     <!-- Links -->
     <div class="btn-group dropup">
-      <button type="button" class="btn"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button type="button" class="btn dropdown-toggle"
+      data-toggle="collapse" data-target="#dropdownMenu">
         Create
       </button>
-      <div class="dropdown-menu text-uppercase">
+      <div class="dropdown-menu text-uppercase" id="dropdownMenu">
         <a class="dropdown-item font-weight-bold pt-2" href="/Stories/StoryStarter.cfm" title="Create a new page">Memory</a>
         <a class="dropdown-item small ml-3" href="/Stories/InterviewStoryStarter.cfm" title="Create a new page">Interview</a>
         <a class="dropdown-item small ml-3" href="/Stories/RecipeStoryStarter.cfm" title="Create a new page">Recipe</a>
@@ -21,13 +21,13 @@
     </div>
 
     <button type="button" class="btn"
-      onclick="window.location.href='/Library_Books.cfm'" title="See all books">
-      Stories
+      onclick="window.location.href='/Library_Books.cfm'" title="See all Stories">
+      Storybooks
       <span id="BookCountSpan" class="badge badge-secondary badge-pill mx-2"></span>
     </button>
 
     <button type="button" class="btn home-button"
-      onclick="window.location.href='/HomePage.cfm'" title="See all books">
+      onclick="window.location.href='/HomePage.cfm'" title="See all memories">
       <i class="fas fa-book-open fa-lg"></i>
     </button>
 

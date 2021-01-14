@@ -58,7 +58,7 @@
 
     <!--- Start Nav --->
     <cfinclude template="/TopNavSmall.cfm">
-
+    
       <cfif qGetUserSubType.UserSubType IS 1>
       <cfquery name="qAdminCharterInvites">
         Select AdminVarValue 
@@ -73,7 +73,8 @@
         AND InvitationType = 1
       </cfquery>
       <cfset remainingInvitations = #val(qAdminCharterInvites.AdminVarValue)# - #qGetCharterCount.RecordCount#>
-<cfoutput>
+      <div class="col-md-10 offset-md-1">
+      <cfoutput>
 <cfif #remainingInvitations# GT 0> 
 <h4>
 As a charter member of Stories For Us, you have #remainingInvitations# remaining invitations to share with a friend so they can also have a lifetime, 
@@ -179,7 +180,7 @@ free use of this app.
         </cfoutput>
       </cfif>
       </div>
-
+    </div>
       <cfinclude template="/FooterMobile.cfm">
         <!-- JQuery -->
         <script type="text/javascript" src="/js/jquery.min.js"></script>

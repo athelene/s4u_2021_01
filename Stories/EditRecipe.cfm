@@ -45,7 +45,7 @@
 
 </div>
 <!--- end gallery  --->
-
+<div class="col-md-10 offset-md-1">
     <form action="/stories/EditMediaAction.cfm" enctype="multipart/form-data" method="post">
         <div>
             <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -146,6 +146,7 @@
         </div>
     </form>
     <BR><BR><BR><BR><BR><BR><BR>
+</div>
     <cfinclude template="/FooterMobile.cfm">
 
         </nav>

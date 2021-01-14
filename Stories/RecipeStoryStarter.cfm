@@ -101,7 +101,7 @@
               </div>
             </div>
           </cfif>
-        </div>
+        
 
         <!---     Beginning of media modal --->
         <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -206,6 +206,7 @@
 
           </div>
         </form>
+      </div>
         <BR><BR><BR><BR><BR><BR><BR>
         <cfinclude template="/FooterMobile.cfm">
 

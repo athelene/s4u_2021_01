@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="/assets/css/index.css">  
 
   <script src="/ckeditor/ckeditor.js"></script>
-
 </head>
 
 <cfajaxproxy cfc="cfc.session" jsclassname="sessionUser" />
@@ -31,7 +30,7 @@
 <cfset session.storyid = 0>
 <cfset session.starter = 'tradition'>
 
-<body>
+
 <!--- Start Nav --->
 <cfinclude template="/TopNavSmall.cfm">
 
@@ -41,11 +40,13 @@
     Order By CircleSort
   </cfquery>
 
-  <div class="HomeOutlineDiv">
-    <ul class="nav nav-pills nav-fill">
+<body>
+  <div class="card card-body col-6 offset-3">
+    <div class="mb-2">
+      <ul class="nav nav-pills justify-content-center nav-primary">
       <li class="nav-item">
         <a class="nav-link" href="/stories/storystarter.cfm">
-          Story
+          Memory
         </a>
       </li>
       <li class="nav-item">
@@ -66,12 +67,8 @@
     </ul>
   </div>
 
-<!--- Start Gallery --->
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
+  <hr>
 
-  </div>
-</div>
 
 <cfif session.StoryID IS 0>
   <cfset storyUser=#session.UserID#>
@@ -97,21 +94,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
-        <div class="modal-body" id="modalDiv">
-
-        </div>
-
+        <div class="modal-body" id="modalDiv"></div>
       </div>
-
     </div>
   </div>
 </cfif>
-
-
-</div>
-
-<!--- End Gallery --->
 
     <!--- Beginning of media Modal --->
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -144,7 +131,6 @@
               <button type="Submit" Name="SaveFile" value="Save Changes" class="btn btn-sm btn-secondary">
                 <i class="fas fa-check"></i>
               </button>
-
             </div>
           </form>
         </div>
@@ -192,12 +178,6 @@
           </div>
         </div>
 
-
-        <!---     end of media modal --->
-
-        <!--- Start tradition question modal --->
-        <form action="/stories/StoryStarterAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
-
           <!-- Full Height Modal Right -->
           <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
@@ -224,6 +204,23 @@
           </div>
           <!-- End Tradition Modal -->
 
+                <!--- Start Gallery --->
+                <div class="container">
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="pageDiv">
+                
+                  </div>
+                </div>
+              
+          <div class="row mt-2">
+            <div class="col-12">
+              <buton class="btn btn-secondary font-weight-bold" data-toggle="modal" data-target="#modalLoginForm" id="mediaBtn">
+                ADD PICTURE / VIDEO
+              </button>
+            </div>
+          </div>
+
+        <!--- Start tradition question modal --->
+        <form action="/stories/StoryStarterAction.cfm" name="simpleAJAX" enctype="multipart/form-data" method="post">
           <BR>
           <div class="md-form input-group mb-3">
             <div class="input-group-prepend">

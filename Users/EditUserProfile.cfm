@@ -32,7 +32,7 @@
                     Select * from UserTbl
                     where userid = #session.userid#
                 </cfquery>
-
+<div class="col-md-10 offset-md-1">
                 <!-- Material form register -->
                 <div class="card">
 
@@ -113,6 +113,8 @@
 
                 </div>
                 <!-- Material form register -->
+
+            </div>
                 <br /><br /><br /><br /><br /><br />
 
                 <cfinclude template="/FooterMobile.cfm">

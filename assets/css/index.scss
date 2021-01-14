@@ -33,6 +33,12 @@ label {
     margin-bottom: 0;
     color: $dark;
     font-weight: bold;
+
+    &.btn-text-primary, &.btn-outline-text-primary {
+        input {
+            display: none;
+        }
+    }
 }
 
 .shade {
@@ -226,7 +232,7 @@ nav {
     width: 10rem;
     background: $white;
     border-radius: 50%;
-    border: solid 2px $primary;
+    border: solid 10px $primary;
 
     a {
         display: inline-block;
@@ -247,9 +253,48 @@ nav {
 
 .story-page-story {
     border-radius: 0.25rem;
-    height: auto;
+
+    height: 10rem;
 
     a {
         margin-top: 0.75rem;
     }
 }
+
+.story {
+    margin-bottom: 1rem;
+}
+
+.postText {
+    max-height: 8rem;
+    margin-bottom: 3px;
+    overflow: hidden;
+}
+
+.s4uGallery {
+    width: 100px; /* You can set the dimensions to whatever you want */
+    height: 100px;
+    object-fit: cover;
+}
+
+.imagetest {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .overlaytest {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+}
+
+.quickConnectButton {
+    background-image: "/assets/images/qc.png";
+}
+
+.testclass {
+    max-height: 2vh;
+    height: 10%;
+    object-fit: cover;
+}
+
